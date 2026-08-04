@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação Particles.js</title>
+    <style>
+        /* Reseta margens e esconde barras de rolagem */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: linear-gradient(90deg, rgba(1, 48, 98, 1) 0%, rgba(0, 11, 40, 1) 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Container da animação: fica fixo no fundo */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1; /* Fica atrás do conteúdo */
+        }
+
+        /* Conteúdo do seu site */
+        .content {
+            position: relative;
+            z-index: 2; /* Fica na frente da animação */
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            pointer-events: none; /* Permite que o mouse interaja com o fundo através do texto */
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1a3347; --navy-deep: #0c1e2c; --navy-mid: #0f2538;
+      --red: #d44f4c; --red-hover: #b8413f;
+      --white: #ffffff; --gray: #86868b;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--navy-deep); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+      padding: 120px 28px 100px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 100%, rgba(212,79,76,0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 70% at 15% 10%, rgba(26,51,71,0.70) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 60% at 85% 20%, rgba(12,30,44,0.60) 0%, transparent 55%),
+        linear-gradient(170deg, #08131c 0%, #0c1e2c 35%, #0f2538 65%, #091620 100%);
+    }
+    .hero-orb {
+      position: absolute; bottom: -120px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(212,79,76,0.22) 0%, rgba(26,51,71,0.10) 40%, transparent 70%);
+      pointer-events: none; z-index: 1;
+      animation: orbPulse 5s ease-in-out infinite;
+    }
+    @keyframes orbPulse {
+      0%,100% { opacity: 0.8; transform: translateX(-50%) scaleX(1); }
+      50%      { opacity: 1;   transform: translateX(-50%) scaleX(1.08); }
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.10em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.9s 0.1s ease forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; flex: 1; height: 1px; width: 28px;
+      background: var(--red); opacity: 0.5;
+    }
+    .hero-title {
+      font-size: clamp(42px, 7.5vw, 84px);
+      font-weight: 700; line-height: 1.04;
+      letter-spacing: -0.035em; color: #fff; margin-bottom: 22px;
+      opacity: 0; animation: fadeUp 0.9s 0.2s ease forwards;
+    }
+    .hero-title em { font-style: normal; color: var(--red); }
+    .hero-sub {
+      font-size: clamp(17px, 2.2vw, 21px);
+      font-weight: 300; line-height: 1.55; color: rgba(255,255,255,0.52);
+      max-width: 540px; margin: 0 auto 44px;
+      opacity: 0; animation: fadeUp 0.9s 0.3s ease forwards;
+    }
+    .hero-ctas {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 0.4s ease forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 14px 28px; border-radius: 980px;
+      font-family: var(--font); font-size: 16px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,79,76,0.35); }
+    .btn-outline { background: transparent; color: rgba(255,255,255,0.85); border: 1.5px solid rgba(255,255,255,0.25); }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.65); color: #fff; transform: translateY(-1px); }
+
+    .hero-scroll-hint {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
+      opacity: 0; animation: fadeUp 1s 1s ease forwards;
+    }
+    .hero-scroll-hint span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(212,79,76,0.7), transparent); animation: scrollLine 2.2s ease-in-out infinite; }
+
+    @keyframes fadeUp   { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollLine { 0%,100% { opacity: 0.3; transform: scaleY(0.8); } 50% { opacity: 1; transform: scaleY(1.1) translateY(4px); } }
+
+    @media (max-width: 620px) {
+      .hero-title { font-size: 38px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+    }
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+    <div id="particles-js"></div>
+
+<!-- ─────────────────────────────── HERO ─────────────────────────────── -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Tecnologia que<br><em>transforma vidas.</em>
+    </h1>
+    <p class="hero-sub">
+      Equipamentos e suprimentos médicos de excelência para neurologia, neurofisiologia, audiologia e diagnóstico. Há mais de 20 anos entregando inovação ao Brasil.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://www.kandel.com.br/equipamento" class="btn btn-red" target="_top">
+        Conheça nosso portfólio
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="https://www.kandel.com.br/nossa-historia" target="_top" class="btn btn-outline">Nossa História</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span></span>
+  </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80, /* Quantidade de pontos na tela */
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff" /* Cor dos pontos (branco) */
+                },
+                "shape": {
+                    "type": "circle",
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                },
+                "size": {
+                    "value": 3, /* Tamanho dos pontos */
+                    "random": true,
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150, /* Distância para criar a linha entre os pontos */
+                    "color": "#ffffff", /* Cor da linha */
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2, /* Velocidade da animação */
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab" /* Efeito ao passar o mouse: "grab" (puxa as linhas) ou "repulse" (afasta os pontos) */
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push" /* Adiciona mais pontos ao clicar */
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>

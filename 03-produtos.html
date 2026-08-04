@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kandel Medical — Produtos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --near-black: #0c1e2c; --light: #f5f5f7;
+      --gray: #86868b;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--light); color: var(--near-black); -webkit-font-smoothing: antialiased; }
+
+    .section { padding: 100px 28px; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .sec-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .sec-title { font-size: clamp(28px, 4vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 14px; }
+
+    /* ── Grid ── */
+    .product-grid {
+      margin-top: 52px; display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .prod-card {
+      border-radius: 22px; overflow: hidden; position: relative;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 44px 48px; min-height: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .prod-card:hover { transform: translateY(-3px); box-shadow: 0 24px 64px rgba(12,30,44,0.12); }
+    .prod-card > div, .prod-card > .prod-actions { position: relative; z-index: 1; }
+
+    .prod-card-wide { grid-column: span 2; min-height: 340px; flex-direction: row; align-items: center; gap: 48px; }
+    .prod-finus { background: linear-gradient(140deg, #0b1c2b 0%, #152d42 50%, #1a3347 100%); color: #fff; }
+    .prod-msx   { background: linear-gradient(140deg, #1a0a0a 0%, #2d1010 60%, #3a1515 100%); color: #fff; }
+    .prod-neuro { background: linear-gradient(140deg, #0a1520 0%, #0f2438 60%, #142d45 100%); color: #fff; }
+
+    .prod-label { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; color: rgba(255,255,255,0.45); }
+    .prod-name  { font-size: clamp(26px, 3vw, 38px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 10px; color: #fff; }
+    .prod-desc  { font-size: 14px; line-height: 1.65; max-width: 360px; margin-bottom: 28px; color: rgba(255,255,255,0.55); }
+
+    .prod-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .prod-link {
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 10px 20px; border-radius: 980px; transition: all 0.2s;
+    }
+    .prod-link-primary { background: var(--red); color: #fff; }
+    .prod-link-primary:hover { background: var(--red-hover); }
+    .prod-link-ghost-dark { background: transparent; color: rgba(255,255,255,0.80); border: 1.5px solid rgba(255,255,255,0.25); }
+    .prod-link-ghost-dark:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+    .prod-finus-visual { flex: 0 0 auto; width: 42%; display: flex; align-items: center; justify-content: center; }
+
+    /* Animated waveform bars */
+    .wave-bars { display: flex; align-items: flex-end; justify-content: center; gap: 3px; height: 28px; }
+    .wave-bars span { display: block; width: 3px; border-radius: 2px; background: var(--red); opacity: 0.8; animation: wave 1.4s ease-in-out infinite; }
+    .wave-bars span:nth-child(1){height:40%;animation-delay:0s} .wave-bars span:nth-child(2){height:70%;animation-delay:.1s} .wave-bars span:nth-child(3){height:100%;animation-delay:.2s} .wave-bars span:nth-child(4){height:60%;animation-delay:.3s} .wave-bars span:nth-child(5){height:85%;animation-delay:.4s} .wave-bars span:nth-child(6){height:45%;animation-delay:.5s} .wave-bars span:nth-child(7){height:70%;animation-delay:.6s}
+    @keyframes wave { 0%,100%{transform:scaleY(.7);opacity:.5} 50%{transform:scaleY(1);opacity:.9} }
+
+    /* ── Scroll reveal ── */
+    .rev { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.10s} .rev.d2{transition-delay:.18s}
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .prod-card-wide { grid-column: span 1; flex-direction: column; min-height: auto; }
+      .prod-finus-visual { width: 100%; max-width: 320px; margin: 24px auto 0; }
+    }
+    @media (max-width: 620px) {
+      .prod-card { padding: 32px 28px; }
+      .section { padding: 64px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="section" id="produtos">
+  <div class="sec-inner">
+    <div class="rev">
+      <div class="sec-tag">Linha de Equipamentos</div>
+      <h2 class="sec-title">O melhor da<br>tecnologia médica mundial.</h2>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Finus 55 -->
+      <div class="prod-card prod-card-wide prod-finus rev">
+        <div style="flex:1;">
+          <div class="prod-label">Diagnóstico por Ultrassom</div>
+          <div class="prod-name">Finus 55</div>
+          <div class="prod-desc">Sistema portátil de diagnóstico por ultrassom com alta resolução, conectividade wireless e interface intuitiva para uso clínico e cirúrgico.</div>
+          <div class="prod-actions">
+            <a href="https://www.kandel.com.br/equipamentos/Ultrassom" class="prod-link prod-link-primary">Saiba mais</a>
+            <a href="https://www.kandel.com.br/fale-conosco" class="prod-link prod-link-ghost-dark">Solicitar demonstração</a>
+          </div>
+        </div>
+        <div class="prod-finus-visual">
+          <img src="https://static.wixstatic.com/media/372348_d1b31b37b9a6411badb7f5a5cb94c956~mv2.jpg/v1/fill/w_480,h_564,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/372348_d1b31b37b9a6411badb7f5a5cb94c956~mv2.jpg"
+               alt="Finus 55" style="width:100%;height:100%;object-fit:contain;object-position:center;border-radius:12px;">
+        </div>
+      </div>
+
+      <!-- MSX -->
+      <div class="prod-card prod-msx rev d1" style="overflow:hidden;">
+        <div>
+          <div class="prod-label">Estimulação Magnética</div>
+          <div class="prod-name">MSX</div>
+          <div class="prod-desc">Sistema de TMS para aplicações clínicas e de pesquisa com máxima precisão.</div>
+        </div>
+        <div class="prod-actions">
+          <a href="https://www.kandel.com.br/equipamentos/Estimulacao-Magnetica" class="prod-link prod-link-primary">Ver produto</a>
+        </div>
+        <img src="https://static.wixstatic.com/media/3aea12_1d1b018d2f00412a996ad8eb08d4546f~mv2.png/v1/fill/w_1143,h_778,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/3aea12_1d1b018d2f00412a996ad8eb08d4546f~mv2.png"
+             alt="MSX" style="position:absolute;bottom:-10px;right:-20px;width:65%;object-fit:contain;opacity:0.92;pointer-events:none;">
+      </div>
+
+      <!-- Neuro Audio -->
+      <div class="prod-card prod-neuro rev d2" style="overflow:hidden;">
+        <div>
+          <div class="prod-label">Eletrofisiologia da Audição</div>
+          <div class="prod-name">Neuro Audio</div>
+          <div class="prod-desc">Plataforma completa para diagnóstico audiológico eletrofisiológico.</div>
+        </div>
+        <div class="prod-actions">
+          <a href="https://www.kandel.com.br/neuro-audio" class="prod-link prod-link-primary">Ver produto</a>
+        </div>
+        <img src="https://static.wixstatic.com/media/3aea12_79725d4e9da2439684928cf7053748b9~mv2.jpg/v1/fill/w_376,h_302,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.jpg"
+             alt="Neuro Audio" style="position:absolute;bottom:-8px;right:-16px;width:62%;object-fit:contain;border-radius:8px;opacity:0.88;pointer-events:none;mix-blend-mode:luminosity;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && (x.target.classList.add('vis'), io.unobserve(x.target))), {threshold:.1});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

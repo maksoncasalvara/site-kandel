@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipamentos — Kandel Medical</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --navy-deep: #0c1e2c; --navy: #1a3347;
+      --near-black: #0c1e2c; --dark-card: #0c1e2c;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: #f5f5f7; color: #0c1e2c; -webkit-font-smoothing: antialiased; }
+
+    /* ── Hero ── */
+    .cat-hero {
+      background: linear-gradient(160deg, #0c1e2c 0%, #0f2538 55%, #1a3347 100%);
+      padding: 72px 28px 80px; position: relative; overflow: hidden;
+      color: #fff;
+    }
+    .cat-hero::before {
+      content: ''; position: absolute; top: -80px; left: 40%;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(212,79,76,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cat-hero::after {
+      content: ''; position: absolute; bottom: -80px; right: -40px;
+      width: 400px; height: 400px;
+      background: radial-gradient(ellipse, rgba(26,51,71,0.6) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cat-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 28px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+    .breadcrumb svg { opacity: 0.3; }
+
+    .cat-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .cat-title { font-size: clamp(36px, 5.5vw, 72px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.04; margin-bottom: 18px; }
+    .cat-desc { font-size: 18px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.50); max-width: 540px; }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      display: flex; gap: 40px; flex-wrap: wrap;
+      margin-top: 48px; padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .stat { }
+    .stat-num { font-size: 32px; font-weight: 700; letter-spacing: -0.04em; color: #fff; }
+    .stat-label { font-size: 13px; color: rgba(255,255,255,0.40); margin-top: 2px; }
+
+    /* ── Grid section ── */
+    .catalog-section { padding: 72px 28px 100px; background: #f5f5f7; }
+    .catalog-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 40px; }
+    .section-header h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; color: #0c1e2c; }
+    .section-header p { font-size: 15px; color: rgba(12,30,44,0.40); margin-top: 6px; }
+
+    /* ── Category cards grid ── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .cat-card {
+      display: flex; flex-direction: column;
+      background: #ffffff;
+      border-radius: 20px; overflow: hidden;
+      border: 1px solid rgba(12,30,44,0.06);
+      box-shadow: 0 4px 24px rgba(12,30,44,0.07);
+      text-decoration: none; color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .cat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 64px rgba(12,30,44,0.13);
+      border-color: rgba(12,30,44,0.09);
+    }
+
+    /* Image area */
+    .card-img {
+      width: calc(100% - 24px);
+      aspect-ratio: 4/3;
+      background: linear-gradient(145deg, #f0f0f4 0%, #e8e8ee 100%);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 28px;
+      border-radius: 14px; margin: 12px 12px 0;
+      position: relative;
+    }
+    .card-img img {
+      max-width: 100%; max-height: 140px;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+    .cat-card:hover .card-img img { transform: scale(1.06); }
+
+    /* Product count badge */
+    .card-badge {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,0.80);
+      border: 1px solid rgba(12,30,44,0.08);
+      backdrop-filter: blur(8px);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      color: rgba(12,30,44,0.50);
+      padding: 4px 10px; border-radius: 980px;
+    }
+
+    /* Card body */
+    .card-body { padding: 20px 22px 24px; flex: 1; display: flex; flex-direction: column; }
+    .card-area { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--red); margin-bottom: 7px; }
+    .card-name { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: #0c1e2c; margin-bottom: 8px; line-height: 1.2; }
+    .card-desc { font-size: 13px; line-height: 1.6; color: rgba(12,30,44,0.48); flex: 1; margin-bottom: 18px; }
+
+    .card-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: rgba(12,30,44,0.40);
+      transition: color 0.2s;
+    }
+    .cat-card:hover .card-cta { color: var(--red); }
+    .card-cta svg { transition: transform 0.2s; }
+    .cat-card:hover .card-cta svg { transform: translateX(3px); }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      margin-top: 64px;
+      background: #ffffff;
+      border: 1px solid rgba(12,30,44,0.07);
+      box-shadow: 0 2px 16px rgba(12,30,44,0.05);
+      border-radius: 20px; padding: 44px 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .cta-banner h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #0c1e2c; margin-bottom: 8px; }
+    .cta-banner p { font-size: 15px; color: rgba(12,30,44,0.45); max-width: 440px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 14px 28px; border-radius: 980px;
+      font-family: var(--font); font-size: 15px; font-weight: 500;
+      text-decoration: none; white-space: nowrap; transition: all 0.2s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,79,76,0.35); }
+    .btn-ghost {
+      background: rgba(12,30,44,0.04);
+      border: 1px solid rgba(12,30,44,0.10);
+      color: #0c1e2c;
+    }
+    .btn-ghost:hover { background: rgba(12,30,44,0.08); }
+    .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ── Scroll reveal ── */
+    .rev { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1 { transition-delay: .05s; }
+    .rev.d2 { transition-delay: .10s; }
+    .rev.d3 { transition-delay: .15s; }
+    .rev.d4 { transition-delay: .20s; }
+    .rev.d5 { transition-delay: .25s; }
+    .rev.d6 { transition-delay: .30s; }
+    .rev.d7 { transition-delay: .35s; }
+    .rev.d8 { transition-delay: .40s; }
+    .rev.d9 { transition-delay: .45s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 960px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+      .stats-strip { gap: 24px; }
+      .cat-hero { padding: 48px 20px 56px; }
+      .catalog-section { padding: 48px 20px 72px; }
+    }
+  </style>
+  <script src="/nav.js" defer></script>
+  <script src="/footer.js" defer></script>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <nav class="breadcrumb">
+      <a href="https://www.kandel.com.br/" target="_top">Início</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Equipamentos</span>
+    </nav>
+    <div class="cat-tag">Portfólio completo</div>
+    <h1 class="cat-title">Equipamentos<br>Kandel Medical</h1>
+    <p class="cat-desc">Soluções diagnósticas e terapêuticas para neurofisiologia, neurologia, audiologia, psiquiatria, cirurgia e imagem — importadas e distribuídas com suporte técnico especializado.</p>
+
+    <div class="stats-strip">
+      <div class="stat">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Categorias</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Equipamentos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Anos de experiência</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Category Grid ── -->
+<section class="catalog-section">
+  <div class="catalog-inner">
+
+    <div class="section-header rev">
+      <h2>Todas as categorias</h2>
+      <p>Selecione uma categoria para ver os equipamentos disponíveis</p>
+    </div>
+
+    <div class="cat-grid">
+
+      <!-- 1. ENMG -->
+      <a href="https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe" class="cat-card rev d1" target="_top">
+        <div class="card-img">
+          <span class="card-badge">6 equipamentos</span>
+          <img src="https://static.wixstatic.com/media/3aea12_66b52d5dd7e149939c5a7eb48238308b~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Eletroneuromiografia e Potenciais Evocados">
+        </div>
+        <div class="card-body">
+          <div class="card-area">ENMG · PE</div>
+          <div class="card-name">Eletroneuromiografia e Potenciais Evocados</div>
+          <div class="card-desc">Sistemas para ENMG, potenciais evocados multimodais e estimulação neuromuscular — da clínica ao centro cirúrgico.</div>
+          <div class="card-cta">Ver equipamentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 2. EEG -->
+      <a href="https://www.kandel.com.br/equipamento/eletroencefalografia" class="cat-card rev d2" target="_top">
+        <div class="card-img">
+          <span class="card-badge">6 equipamentos</span>
+          <img src="https://static.wixstatic.com/media/df41ca_61ee2aae97e849cebda47f3b73657376~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Eletroencefalografia">
+        </div>
+        <div class="card-body">
+          <div class="card-area">EEG · Polissonografia</div>
+          <div class="card-name">Eletroencefalografia e Potenciais Evocados</div>
+          <div class="card-desc">Linha Neuron Spectrum para EEG quantitativo, análise de sono e diagnóstico de epilepsia — da triagem ao laboratório.</div>
+          <div class="card-cta">Ver equipamentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 3. Estimulação Magnética -->
+      <a href="https://www.kandel.com.br/equipamentos/estimula%C3%A7%C3%A3o-magn%C3%A9tica-transcraniana" class="cat-card rev d3" target="_top">
+        <div class="card-img">
+          <span class="card-badge">3 equipamentos</span>
+          <img src="https://static.wixstatic.com/media/3aea12_f33a06ddfab840ee95d4d2552f32e2ac~mv2.png"
+               alt="Estimulação Magnética Transcraniana">
+        </div>
+        <div class="card-body">
+          <div class="card-area">EMT · TMS</div>
+          <div class="card-name">Estimulação Magnética Transcraniana</div>
+          <div class="card-desc">Sistemas Neurosoft para diagnóstico neurofisiológico e tratamento não invasivo de depressão, dor crônica e reabilitação.</div>
+          <div class="card-cta">Ver equipamentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 4. Monitorização Intraoperatória -->
+      <a href="https://www.kandel.com.br/equipamentos/monitoriza%C3%A7%C3%A3o-intraoperat%C3%B3ria" class="cat-card rev d4" target="_top">
+        <div class="card-img">
+          <span class="card-badge">3 equipamentos</span>
+          <img src="https://static.wixstatic.com/media/3aea12_4fe3c7934798476eb08b0c24d1ac23f2~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Monitorização Intraoperatória">
+        </div>
+        <div class="card-body">
+          <div class="card-area">MNIO · Intraoperatório</div>
+          <div class="card-name">Monitorização Intraoperatória</div>
+          <div class="card-desc">Sistemas Neuro IOM para monitorização neurofisiológica em tempo real durante cirurgias de coluna, crânio e vasculares.</div>
+          <div class="card-cta">Ver equipamentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 5. Audiologia -->
+      <a href="https://www.kandel.com.br/equipamento/audiologia" class="cat-card rev d5" target="_top">
+        <div class="card-img">
+          <span class="card-badge">4 equipamentos</span>
+          <img src="https://static.wixstatic.com/media/3aea12_79725d4e9da2439684928cf7053748b9~mv2.jpg"
+               alt="Audiologia">
+        </div>
+        <div class="card-body">
+          <div class="card-area">PEATE · EOA · Imitanciometria</div>
+          <div class="card-name">Audiologia</div>
+          <div class="card-desc">Equipamentos para potenciais evocados auditivos, emissões otoacústicas e imitanciometria em triagem neonatal e clínica.</div>
+          <div class="card-cta">Ver equipamentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 6. Ultrassom -->
+      <a href="https://www.kandel.com.br/equipamento/ultrassonografia" class="cat-card rev d6" target="_top">
+        <div class="card-img">
+          <span class="card-badge">3 equipamentos</span>
+          <img src="https://static.wixstatic.com/media/3aea12_a5c88915e3a840669bed75a193b6a751~mv2.jpg/v1/fill/w_480,h_480,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Finus%2070.jpg"
+               alt="Ultrassom">
+        </div>
+        <div class="card-body">
+          <div class="card-area">Ultrassonografia</div>
+          <div class="card-name">Ultrassom</div>
+          <div class="card-desc">Sistemas de ultrassonografia portáteis e de bancada para diagnóstico por imagem em neurologia e fisioterapia.</div>
+          <div class="card-cta">Ver equipamentos <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 7. Eletrorretinografia -->
+      <a href="https://www.kandel.com.br/equipamento/eletrorretinografia" class="cat-card rev d7" target="_top">
+        <div class="card-img">
+          <span class="card-badge">1 equipamento</span>
+          <img src="https://static.wixstatic.com/media/3aea12_e8e0b25a2b3240c7ba5dfd9e91275cda~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Eletrorretinografia">
+        </div>
+        <div class="card-body">
+          <div class="card-area">ERG · Eletrofisiologia Visual</div>
+          <div class="card-name">Eletrorretinografia</div>
+          <div class="card-desc">Neuro ERG — sistema portátil para avaliação da função retiniana com alta taxa de amostragem e alimentação via USB.</div>
+          <div class="card-cta">Ver equipamento <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 8. Biofeedback -->
+      <a href="https://www.kandel.com.br/equipamento/neurofeedback" class="cat-card rev d8" target="_top">
+        <div class="card-img">
+          <span class="card-badge">1 equipamento</span>
+          <img src="https://static.wixstatic.com/media/8bbde3_a2b75495d8704b4aa627bd89719d47a2~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Biofeedback e Neurofeedback">
+        </div>
+        <div class="card-body">
+          <div class="card-area">Neurofeedback · EEG Quantitativo</div>
+          <div class="card-name">Biofeedback e Neurofeedback</div>
+          <div class="card-desc">Neuron Spectrum NFB — sistema portátil para treinamento de Neurofeedback com software personalizável e alimentação via USB.</div>
+          <div class="card-cta">Ver equipamento <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+      <!-- 9. Sistema Cirúrgico Ultrassônico -->
+      <a href="https://www.kandel.com.br/equipamento/sistema-cirurgico-ultrassonico" class="cat-card rev d9" target="_top">
+        <div class="card-img">
+          <span class="card-badge">1 equipamento</span>
+          <img src="https://static.wixstatic.com/media/3aea12_764f9e48c43b4a99ba2724fff8749207~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Ultrasonic_Surgical_System.png"
+               alt="Sistema Cirúrgico Ultrassônico">
+        </div>
+        <div class="card-body">
+          <div class="card-area">Bisturi Ultrassônico · Innolcon</div>
+          <div class="card-name">Sistema Cirúrgico Ultrassônico</div>
+          <div class="card-desc">Plataforma cirúrgica Innolcon para corte e coagulação de tecidos moles em cirurgias abertas e endoscópicas.</div>
+          <div class="card-cta">Ver equipamento <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner rev">
+      <div>
+        <h3>Não encontrou o que procura?</h3>
+        <p>Entre em contato com nossa equipe e tire todas suas dúvidas!</p>
+      </div>
+      <div class="btn-group">
+        <a href="https://www.kandel.com.br/fale-conosco" class="btn btn-red" target="_top">
+          Fale conosco
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://loja.kandel.com.br/" class="btn btn-ghost" target="_top">Ver suprimentos</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && (x.target.classList.add('vis'), io.unobserve(x.target))), {threshold:.06});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

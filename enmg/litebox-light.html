@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Litebox — Eletroneuromiógrafo | Kandel Medical</title>
+  <meta name="description" content="O EMG mais moderno do mundo. Leve, compacto e portátil com 3 canais de captação, pulso bifásico e alimentação USB. Ideal para ENMG, potenciais evocados e monitorização intraoperatória.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --navy-deep: #0c1e2c; --navy: #1a3347;
+      --near-black: #0c1e2c;
+      --light: #f5f5f7; --white: #ffffff;
+      --text: #0c1e2c;
+      --text-secondary: rgba(12,30,44,0.50);
+      --text-tertiary: rgba(12,30,44,0.35);
+      --border: rgba(12,30,44,0.07);
+      --card-shadow: 0 4px 24px rgba(12,30,44,0.06);
+      --card-shadow-hover: 0 24px 64px rgba(12,30,44,0.12);
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--light); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+    /* ═══════════════════════════════════════
+       HERO — permanece escuro
+    ═══════════════════════════════════════ */
+    .hero {
+      background: linear-gradient(160deg, #080f17 0%, #0c1e2c 45%, #0f2538 100%);
+      min-height: 92vh; display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 100px 64px 80px; gap: 48px;
+      position: relative; overflow: hidden;
+      color: #fff;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 50%, rgba(212,79,76,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,0.30); margin-bottom: 36px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.30); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+    .breadcrumb svg { opacity: .3; }
+    .hero-label { font-size: 12px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .hero-title {
+      font-size: clamp(52px, 6vw, 88px); font-weight: 800;
+      letter-spacing: -.05em; line-height: .95; margin-bottom: 24px; color: #fff;
+    }
+    .hero-title span { color: var(--red); }
+    .hero-tagline { font-size: 20px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.55); margin-bottom: 14px; max-width: 440px; }
+    .hero-sub { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.35); max-width: 400px; margin-bottom: 44px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 980px;
+      font-family: var(--font); font-size: 15px; font-weight: 500;
+      text-decoration: none; transition: all .22s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212,79,76,.38); }
+    .btn-ghost-dark { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.80); }
+    .btn-ghost-dark:hover { background: rgba(255,255,255,.14); transform: translateY(-1px); }
+    .btn-ghost-light { background: rgba(12,30,44,.04); border: 1px solid rgba(12,30,44,.12); color: var(--text); }
+    .btn-ghost-light:hover { background: rgba(12,30,44,.08); transform: translateY(-1px); }
+    .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+    .hero-product-img {
+      max-height: 620px; max-width: 100%; object-fit: contain;
+      filter: drop-shadow(0 40px 80px rgba(12,30,44,.7));
+      animation: floatImg 5s ease-in-out infinite;
+    }
+    @keyframes floatImg { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    /* ═══════════════════════════════════════
+       SPECS STRIP — claro
+    ═══════════════════════════════════════ */
+    .specs-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(12,30,44,.04);
+      padding: 28px 64px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .spec-item {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 16px 36px; text-align: center;
+      border-right: 1px solid rgba(12,30,44,.07);
+    }
+    .spec-item:last-child { border-right: none; }
+    .spec-value { font-size: 26px; font-weight: 700; letter-spacing: -.04em; color: var(--text); }
+    .spec-value span { color: var(--red); }
+    .spec-key { font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════
+       SECTION COMMONS
+    ═══════════════════════════════════════ */
+    section { padding: 88px 64px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px,3.5vw,48px); font-weight: 700; letter-spacing: -.04em; line-height: 1.1; margin-bottom: 16px; color: var(--text); }
+    .section-desc { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); max-width: 600px; }
+
+    /* ═══════════════════════════════════════
+       INTRO
+    ═══════════════════════════════════════ */
+    .intro-section { background: var(--light); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .intro-text p { font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+    .intro-text p:last-child { margin-bottom: 0; }
+    .intro-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(212,79,76,.07); border: 1px solid rgba(212,79,76,.18);
+      color: rgba(12,30,44,.65); font-size: 13px; font-weight: 500;
+      padding: 7px 14px; border-radius: 980px;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .intro-visual { display: flex; flex-direction: column; gap: 16px; }
+    .intro-scene-img { width: 100%; border-radius: 20px; overflow: hidden; background: var(--white); box-shadow: var(--card-shadow); }
+    .intro-scene-img img { width: 100%; display: block; border-radius: 20px; }
+
+    /* ═══════════════════════════════════════
+       FEATURES
+    ═══════════════════════════════════════ */
+    .features-section { background: var(--white); }
+    .features-header { margin-bottom: 52px; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-card {
+      background: var(--light); border-radius: 20px;
+      border: 1px solid var(--border); padding: 32px 28px;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .feature-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+    .feature-num { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(212,79,76,.55); margin-bottom: 16px; }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(212,79,76,.08);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .feature-name { font-size: 17px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; color: var(--text); }
+    .feature-desc { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
+    .feature-highlight {
+      display: inline-block; margin-top: 14px;
+      font-size: 12px; font-weight: 600; color: var(--red);
+      background: rgba(212,79,76,.08); padding: 4px 10px; border-radius: 6px;
+    }
+
+    /* ═══════════════════════════════════════
+       SOFTWARE
+    ═══════════════════════════════════════ */
+    .software-section { background: var(--light); }
+    .software-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .software-visual { overflow: hidden; min-width: 0; }
+    .software-visual img { width: 100%; max-width: 100%; display: block; border-radius: 20px; box-shadow: var(--card-shadow); }
+    .software-modules { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+    .sw-module {
+      background: var(--white); border-radius: 16px;
+      border: 1px solid var(--border); padding: 22px 24px;
+      box-shadow: var(--card-shadow);
+    }
+    .sw-module-name { font-size: 15px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; color: var(--text); }
+    .sw-module-name .sw-tag { font-size: 11px; font-weight: 600; background: rgba(212,79,76,.08); color: var(--red); padding: 2px 8px; border-radius: 5px; }
+    .sw-module-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ═══════════════════════════════════════
+       EXAMS
+    ═══════════════════════════════════════ */
+    .exams-section { background: var(--white); }
+    .exams-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 48px; }
+    .exam-chip {
+      background: var(--light); border-radius: 10px; padding: 14px 16px;
+      border: 1px solid var(--border); font-size: 13px; font-weight: 500;
+      color: rgba(12,30,44,.60); display: flex; align-items: center; gap: 8px;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .exam-chip:hover { border-color: rgba(212,79,76,.30); color: var(--text); background: var(--white); }
+    .exam-chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--red); flex-shrink: 0; opacity: .6; }
+
+    /* ═══════════════════════════════════════
+       APPLICATIONS
+    ═══════════════════════════════════════ */
+    .apps-section { background: var(--light); }
+    .apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+    .app-card {
+      background: var(--white); border-radius: 20px; padding: 32px 28px;
+      border: 1px solid var(--border); box-shadow: var(--card-shadow);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .app-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+    .app-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(212,79,76,.08); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 18px;
+    }
+    .app-card-name { font-size: 17px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; color: var(--text); }
+    .app-card-desc { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
+
+    /* ═══════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════ */
+    .faq-section { background: var(--white); }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 48px; max-width: 800px; }
+    .faq-item {
+      background: var(--light); border-radius: 16px;
+      border: 1px solid var(--border); overflow: hidden;
+    }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 20px 24px; cursor: pointer;
+      font-size: 15px; font-weight: 600; color: var(--text);
+      transition: background .2s; list-style: none; user-select: none;
+    }
+    .faq-q:hover { background: rgba(12,30,44,.03); }
+    .faq-q::marker, .faq-q::-webkit-details-marker { display: none; }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(12,30,44,.06); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .3s, background .2s;
+    }
+    .faq-icon svg { stroke: var(--text); }
+    details[open] .faq-icon { transform: rotate(45deg); background: var(--red); }
+    details[open] .faq-icon svg { stroke: #fff; }
+    .faq-a { padding: 0 24px 20px; font-size: 14px; line-height: 1.75; color: var(--text-secondary); }
+
+    /* ═══════════════════════════════════════
+       RELATED
+    ═══════════════════════════════════════ */
+    .related-section { background: var(--light); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+    .related-card {
+      display: flex; align-items: center; gap: 24px;
+      background: var(--white); border-radius: 20px; padding: 24px;
+      border: 1px solid var(--border); box-shadow: var(--card-shadow);
+      text-decoration: none; color: inherit;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .related-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+    .related-img {
+      width: 88px; height: 88px; flex-shrink: 0; border-radius: 14px;
+      background: linear-gradient(145deg, #f0f0f4, #e8e8ee);
+      display: flex; align-items: center; justify-content: center; padding: 10px;
+    }
+    .related-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .related-info { flex: 1; }
+    .related-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); margin-bottom: 5px; }
+    .related-name { font-size: 17px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 5px; color: var(--text); }
+    .related-desc { font-size: 13px; color: var(--text-tertiary); line-height: 1.5; }
+    .related-arrow { color: rgba(12,30,44,.18); flex-shrink: 0; transition: transform .2s, color .2s; }
+    .related-card:hover .related-arrow { transform: translateX(4px); color: var(--red); }
+
+    /* ═══════════════════════════════════════
+       CTA — mantém tom de cor para contraste
+    ═══════════════════════════════════════ */
+    .cta-section { background: var(--white); }
+    .cta-banner {
+      background: linear-gradient(135deg, #0c1e2c 0%, #1a3347 100%);
+      border-radius: 24px; padding: 56px 60px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .cta-banner h2 { font-size: 32px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 10px; color: #fff; }
+    .cta-banner p { font-size: 16px; color: rgba(255,255,255,.45); max-width: 480px; }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════ */
+    .rev { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.08s} .rev.d2{transition-delay:.16s} .rev.d3{transition-delay:.24s}
+    .rev.d4{transition-delay:.32s} .rev.d5{transition-delay:.40s}
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 80px 40px 60px; text-align: center; }
+      .hero-visual { order: -1; max-height: 300px; }
+      .hero-product-img { max-height: 260px; }
+      .hero-tagline, .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .breadcrumb { justify-content: center; }
+      .intro-grid, .software-grid { grid-template-columns: 1fr; gap: 48px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .exams-grid { grid-template-columns: repeat(3, 1fr); }
+      section { padding: 64px 32px; }
+      .specs-strip { padding: 20px 32px; }
+      .spec-item { padding: 12px 20px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 72px 24px 48px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .exams-grid { grid-template-columns: repeat(2, 1fr); }
+      .apps-grid, .related-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; padding: 36px 28px; }
+      section { padding: 56px 24px; }
+      .specs-strip { flex-direction: column; }
+      .spec-item { border-right: none; border-bottom: 1px solid var(--border); width: 100%; }
+    }
+  </style>
+  <script src="/nav.js" defer></script>
+  <script src="/footer.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero">
+  <div class="hero-text">
+    <nav class="breadcrumb">
+      <a href="/" target="_top">Início</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="/enmg" target="_top">ENMG e Potenciais Evocados</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Litebox</span>
+    </nav>
+    <div class="hero-label">Eletroneuromiografia e Potenciais Evocados</div>
+    <h1 class="hero-title">Lite<span>box</span></h1>
+    <p class="hero-tagline">O EMG mais moderno do mundo.</p>
+    <p class="hero-sub">Leve, compacto e portátil. 3 canais de captação, pulso bifásico e alimentação via USB — EMG e potenciais evocados em um único hardware.</p>
+    <div class="hero-actions">
+      <a href="https://www.kandel.com.br/fale-conosco" class="btn btn-red" target="_top">
+        Solicitar orçamento
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/litebox" class="btn btn-ghost-dark" target="_top">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ver no site
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img class="hero-product-img"
+         src="https://static.wixstatic.com/media/6cfa44_1447972663e7436db08c0a90316ba24c~mv2.jpg"
+         alt="Litebox — Eletroneuromiógrafo Neurosoft">
+  </div>
+</div>
+
+<!-- ═══════════════════ SPECS STRIP ═══════════════════ -->
+<div class="specs-strip">
+  <div class="spec-item">
+    <div class="spec-value">3</div>
+    <div class="spec-key">Canais de captação</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value"><span>USB</span></div>
+    <div class="spec-key">Alimentação</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">24<span>+</span></div>
+    <div class="spec-key">Tipos de exame</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">500<span>mV</span></div>
+    <div class="spec-key">Tolerância — MNIO</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value"><span>2 em 1</span></div>
+    <div class="spec-key">EMG + PE num hardware</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ INTRO ═══════════════════ -->
+<section class="intro-section">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-text rev">
+        <div class="section-eyebrow">Sobre o equipamento</div>
+        <h2 class="section-title">Um passo adiante<br>na corrida pela excelência</h2>
+        <p>O Litebox é o resultado de mais um passo adiante na corrida incansável da Neurosoft para manter a excelência que marca seus mais de 30 anos de história. Mantém a mesma portabilidade do Neuro-MEP-Micro em um sistema com 3 canais, aperfeiçoando ainda mais a rejeição de artefatos de estímulo e ruídos por inovações na engenharia do hardware.</p>
+        <p>Compatível com o novo eletrodo de estimulação de 7 controles, que permite conduzir todo o exame rapidamente com uma só mão — e ainda oferece o formato de pulso bifásico nas opções de estimulação elétrica.</p>
+        <div class="intro-badges">
+          <span class="badge">Pulso bifásico</span>
+          <span class="badge">3 canais</span>
+          <span class="badge">USB powered</span>
+          <span class="badge">MNIO compatível</span>
+          <span class="badge">Eletrodo de 7 controles</span>
+        </div>
+      </div>
+      <div class="intro-visual rev d2">
+        <div class="intro-scene-img">
+          <img src="https://static.wixstatic.com/media/6cfa44_91280451fddc46338bc0273482c7401b~mv2.png"
+               alt="Litebox em uso clínico">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FEATURES ═══════════════════ -->
+<section class="features-section">
+  <div class="section-inner">
+    <div class="features-header rev">
+      <div class="section-eyebrow">Inovações de hardware</div>
+      <h2 class="section-title">Engenharia repensada<br>de ponta a ponta</h2>
+      <p class="section-desc">Cada detalhe do Litebox foi redesenhado para entregar mais qualidade de sinal, mais controle e mais liberdade clínica.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card rev d1">
+        <div class="feature-num">Recurso 01</div>
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M12 2v6M12 16v6M4.93 4.93l4.24 4.24M14.83 14.83l4.24 4.24M2 12h6M16 12h6M4.93 19.07l4.24-4.24M14.83 9.17l4.24-4.24"/></svg></div>
+        <div class="feature-name">Eletrodo de 7 controles</div>
+        <div class="feature-desc">Novo eletrodo de estimulação com 7 controles que permitem conduzir todo exame rapidamente com uma única mão — liberdade e eficiência sem precedentes.</div>
+        <span class="feature-highlight">Operação com uma mão</span>
+      </div>
+      <div class="feature-card rev d2">
+        <div class="feature-num">Recurso 02</div>
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="feature-name">Pulso bifásico</div>
+        <div class="feature-desc">Estimulação elétrica com opção de pulso bifásico — aumenta a eficácia da estimulação e amplia as possibilidades de protocolos clínicos e de pesquisa.</div>
+        <span class="feature-highlight">Monofásico + Bifásico</span>
+      </div>
+      <div class="feature-card rev d3">
+        <div class="feature-num">Recurso 03</div>
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="feature-name">Rejeição de ruídos aprimorada</div>
+        <div class="feature-desc">Aumento da rejeição de modo comum, maior impedância de entrada e menor ruído intrínseco — qualidade de sinal de alta fidelidade em qualquer ambiente clínico.</div>
+        <span class="feature-highlight">Alta qualidade de sinal</span>
+      </div>
+      <div class="feature-card rev d1">
+        <div class="feature-num">Recurso 04</div>
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <div class="feature-name">Teclado dedicado embutido</div>
+        <div class="feature-desc">Teclado com dois comandos adicionais — duração de estímulo e F8 — otimizando o fluxo do exame sem dependência de mouse ou teclado externo.</div>
+        <span class="feature-highlight">Duração de estímulo · F8</span>
+      </div>
+      <div class="feature-card rev d2">
+        <div class="feature-num">Recurso 05</div>
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+        <div class="feature-name">3 canais simultâneos</div>
+        <div class="feature-desc">Três canais de captação permitem estudo mais rápido de PESS ou condução nervosa sem necessidade de troca de cabos — combinando eletrodos adesivos, alça e agulha.</div>
+        <span class="feature-highlight">Sem troca de cabos</span>
+      </div>
+      <div class="feature-card rev d3">
+        <div class="feature-num">Recurso 06</div>
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="feature-name">Compatível com MNIO</div>
+        <div class="feature-desc">Tolerância a polarização de 500mV favorece o uso em monitorização neurofisiológica intraoperatória — ideal para salas cirúrgicas com alta interferência elétrica.</div>
+        <span class="feature-highlight">500mV de tolerância</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SOFTWARE ═══════════════════ -->
+<section class="software-section">
+  <div class="section-inner">
+    <div class="software-grid">
+      <div class="rev">
+        <div class="section-eyebrow">Software</div>
+        <h2 class="section-title">O software mais<br>completo do mundo</h2>
+        <p class="section-desc">Seja qual for o exame, com o Neuro‑MEP.NET você tem menos para aprender e muito mais para fazer. Sistema modular expansível conforme sua necessidade.</p>
+        <div class="software-modules">
+          <div class="sw-module">
+            <div class="sw-module-name">Módulo Básico <span class="sw-tag">Incluído</span></div>
+            <div class="sw-module-desc">Neurocondução, Onda F, Reflexo H, Testes de agulha (fibra única, DQEMG), Tremor, Blink, Estimulação repetitiva, Cutâneo simpático, Inching, Colisão, MUNE e MUNIX, Resposta RIII, Estimulação tripla.</div>
+          </div>
+          <div class="sw-module">
+            <div class="sw-module-name">Módulo de Potenciais Evocados <span class="sw-tag">Opcional</span></div>
+            <div class="sw-module-desc">PE Auditivos (ABR / AMLR / ALLR), Cognitivos (P300 / ERP), Visuais (padrão reverso, flash, ERG) e Motores (PEM) — com acessórios específicos.</div>
+          </div>
+          <div class="sw-module">
+            <div class="sw-module-name">Módulo de VFC <span class="sw-tag">Opcional</span></div>
+            <div class="sw-module-desc">Análise de Variabilidade da Frequência Cardíaca para avaliação do sistema nervoso autônomo — testes de repouso, ortostático e outros protocolos padronizados.</div>
+          </div>
+        </div>
+      </div>
+      <div class="software-visual rev d2">
+        <img src="https://static.wixstatic.com/media/8a7f43_3d6bad4a01b14f11afe3d088b0eeb534~mv2.png"
+             alt="Software Neuro-MEP.NET">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ EXAMES ═══════════════════ -->
+<section class="exams-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Exames disponíveis</div>
+    <h2 class="section-title rev">24+ tipos de exame<br>em uma plataforma</h2>
+    <div class="exams-grid">
+      <div class="exam-chip rev d1">Neurocondução</div>
+      <div class="exam-chip rev d2">Onda F</div>
+      <div class="exam-chip rev d3">Reflexo H</div>
+      <div class="exam-chip rev d4">Eletromiografia</div>
+      <div class="exam-chip rev d1">Fibra Única</div>
+      <div class="exam-chip rev d2">EMG Quantitativa</div>
+      <div class="exam-chip rev d3">Blink</div>
+      <div class="exam-chip rev d4">Inching</div>
+      <div class="exam-chip rev d1">Tremor</div>
+      <div class="exam-chip rev d2">Estimulação Repetitiva</div>
+      <div class="exam-chip rev d3">Cutâneo Simpático</div>
+      <div class="exam-chip rev d4">Colisão</div>
+      <div class="exam-chip rev d1">PE Auditivo</div>
+      <div class="exam-chip rev d2">PE Padrão Reverso</div>
+      <div class="exam-chip rev d3">PE Flash</div>
+      <div class="exam-chip rev d4">PESS</div>
+      <div class="exam-chip rev d1">P300 e ERP</div>
+      <div class="exam-chip rev d2">Potenciais Motores</div>
+      <div class="exam-chip rev d3">ECochG</div>
+      <div class="exam-chip rev d4">MUNE e MUNIX</div>
+      <div class="exam-chip rev d1">Resposta RIII</div>
+      <div class="exam-chip rev d2">ERG</div>
+      <div class="exam-chip rev d3">Análise de VFC</div>
+      <div class="exam-chip rev d4">Estimulação Tripla</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ APPLICATIONS ═══════════════════ -->
+<section class="apps-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Indicações</div>
+    <h2 class="section-title rev">Aplicações clínicas</h2>
+    <div class="apps-grid">
+      <div class="app-card rev d1">
+        <div class="app-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="app-card-name">Eletroneuromiografia</div>
+        <div class="app-card-desc">Neurocondução motora e sensitiva, latências distais, velocidades de condução, amplitudes e áreas — avaliação completa da função do nervo periférico e músculo.</div>
+      </div>
+      <div class="app-card rev d2">
+        <div class="app-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <div class="app-card-name">Potenciais Evocados</div>
+        <div class="app-card-desc">Módulo de PE permite avaliação de vias auditivas, visuais, somatossensitivas e motoras — diagnóstico de lesões do sistema nervoso central e periférico.</div>
+      </div>
+      <div class="app-card rev d3">
+        <div class="app-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="app-card-name">Monitorização Intraoperatória</div>
+        <div class="app-card-desc">A tolerância a 500mV de polarização e a alta qualidade de sinal tornam o Litebox adequado para uso em sala cirúrgica com alta interferência elétrica.</div>
+      </div>
+      <div class="app-card rev d4">
+        <div class="app-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="app-card-name">Pesquisa Neurofisiológica</div>
+        <div class="app-card-desc">Exames avançados como EMG de fibra única, DQEMG, MUNE/MUNIX, Macro EMG e análise de tremor colocam o Litebox na fronteira da pesquisa em neurofisiologia clínica.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Dúvidas frequentes</div>
+    <h2 class="section-title rev">Perguntas sobre o Litebox</h2>
+    <div class="faq-list">
+      <details class="faq-item rev d1">
+        <summary class="faq-q">Qual a diferença entre o Litebox e o Neuro-MEP-Micro?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </summary>
+        <div class="faq-a">O Litebox é a evolução direta do Neuro-MEP-Micro. Enquanto o Micro opera com 2 canais de captação, o Litebox tem 3 canais — permitindo estudos de PESS e condução nervosa sem troca de cabos. Além disso, o Litebox inclui pulso bifásico, maior rejeição de modo comum e tolerância de 500mV, além do novo eletrodo de 7 controles para operação com uma mão.</div>
+      </details>
+      <details class="faq-item rev d2">
+        <summary class="faq-q">O Litebox pode ser usado em monitorização intraoperatória?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </summary>
+        <div class="faq-a">Sim. A tolerância a 500mV de polarização favorece o uso em ambientes com alta interferência elétrica, como salas cirúrgicas. Para monitorização exclusivamente cirúrgica e com maior número de canais, o Neuro-IOM é a plataforma dedicada da Neurosoft.</div>
+      </details>
+      <details class="faq-item rev d3">
+        <summary class="faq-q">Quais acessórios são necessários para o módulo de Potenciais Evocados?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </summary>
+        <div class="faq-a">Para PE Auditivos é necessário o estimulador auditivo. Para PE Visuais, um estimulador de padrão reverso. Para PESS, eletrodos de superfície adicionais. Todos os acessórios são comercializados pela Kandel Medical, que orienta a configuração ideal para cada especialidade.</div>
+      </details>
+      <details class="faq-item rev d4">
+        <summary class="faq-q">O equipamento precisa de instalação especial ou tomada dedicada?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </summary>
+        <div class="faq-a">Não. O Litebox é alimentado via USB, eliminando a necessidade de tomada dedicada ou instalação elétrica especial. A captação de energia pela porta USB do computador ou de um hub USB ativo é suficiente para operação plena — ideal para consultórios, ambulatórios e deslocamentos.</div>
+      </details>
+      <details class="faq-item rev d5">
+        <summary class="faq-q">O software Neuro-MEP.NET é atualizado regularmente?
+          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+        </summary>
+        <div class="faq-a">Sim. A Neurosoft disponibiliza atualizações regulares do Neuro-MEP.NET com novos recursos, modelos de teste e correções. A Kandel Medical garante suporte técnico em português para instalação e configuração de atualizações.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ RELATED ═══════════════════ -->
+<section class="related-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Linha ENMG e Potenciais Evocados</div>
+    <h2 class="section-title rev">Outros equipamentos</h2>
+    <div class="related-grid">
+      <a href="https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/skybox" class="related-card rev d1" target="_top">
+        <div class="related-img"><img src="https://static.wixstatic.com/media/3aea12_85fb001a603945f1a284cb424fb8a1d6~mv2.png" alt="Skybox"></div>
+        <div class="related-info">
+          <div class="related-label">ENMG e Potenciais Evocados</div>
+          <div class="related-name">Skybox</div>
+          <div class="related-desc">Versão expandida com maior número de canais — ideal para laboratórios de alto volume e protocolos avançados de pesquisa.</div>
+        </div>
+        <svg class="related-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/neuro-mep-micro" class="related-card rev d2" target="_top">
+        <div class="related-img"><img src="https://static.wixstatic.com/media/3aea12_85fb001a603945f1a284cb424fb8a1d6~mv2.png" alt="Neuro MEP Micro"></div>
+        <div class="related-info">
+          <div class="related-label">ENMG e Potenciais Evocados</div>
+          <div class="related-name">Neuro MEP Micro</div>
+          <div class="related-desc">Versão anterior com 2 canais de captação — compacto e confiável para neurocondução e eletromiografia de rotina.</div>
+        </div>
+        <svg class="related-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-banner rev">
+      <div>
+        <h2>Pronto para conhecer o Litebox?</h2>
+        <p>Agende uma demonstração com nossos especialistas e veja o EMG mais moderno do mundo em ação na sua prática clínica.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="https://www.kandel.com.br/fale-conosco" class="btn btn-red" target="_top">
+          Agendar demonstração
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="/enmg" class="btn btn-ghost-dark" target="_top">Ver categoria ENMG</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

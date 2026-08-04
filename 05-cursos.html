@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kandel Medical — Cursos & Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --navy-deep: #0c1e2c; --navy-mid: #0f2538; --navy: #1a3347;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--navy-deep); color: #fff; -webkit-font-smoothing: antialiased; }
+
+    .section { padding: 100px 28px; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .sec-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .sec-title { font-size: clamp(28px, 4vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 14px; color: #fff; }
+
+    /* ── Layout ── */
+    .cursos-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .cursos-intro p {
+      font-size: 18px; font-weight: 300; line-height: 1.65;
+      color: rgba(255,255,255,0.52); max-width: 480px; margin-bottom: 36px;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 14px 28px; border-radius: 980px;
+      font-family: var(--font); font-size: 16px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,79,76,0.35); }
+
+    /* ── Course cards ── */
+    .cursos-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .curso-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; padding: 24px 28px;
+      display: flex; align-items: center; gap: 20px;
+      text-decoration: none; color: inherit;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .curso-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(212,79,76,0.4);
+      transform: translateX(4px);
+    }
+
+    .curso-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(212,79,76,0.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .curso-info { flex: 1; }
+    .curso-name { font-size: 15px; font-weight: 600; color: rgba(255,255,255,0.90); margin-bottom: 4px; }
+    .curso-meta { font-size: 13px; color: rgba(255,255,255,0.38); }
+
+    .curso-arrow {
+      color: rgba(255,255,255,0.25);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .curso-card:hover .curso-arrow { color: var(--red); transform: translateX(3px); }
+
+    /* ── Scroll reveal ── */
+    .rev { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.10s} .rev.d2{transition-delay:.18s} .rev.d3{transition-delay:.26s} .rev.d4{transition-delay:.34s} .rev.d5{transition-delay:.42s}
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .cursos-wrap { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 620px) {
+      .section { padding: 64px 20px; }
+      .curso-card { padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="section" id="cursos">
+  <div class="sec-inner">
+    <div class="cursos-wrap">
+
+      <div class="cursos-intro rev">
+        <div class="sec-tag">Cursos & Eventos</div>
+        <h2 class="sec-title">Capacitação para quem usa o melhor.</h2>
+        <p>Treinamentos presenciais e online com especialistas para maximizar o potencial dos equipamentos Kandel na sua prática clínica.</p>
+        <a href="https://www.kandel.com.br/cursos-e-eventos" class="btn btn-red">
+          Ver programação
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+
+      <div class="cursos-list">
+
+        <a href="https://www.kandel.com.br/cursos-e-eventos" class="curso-card rev d1">
+          <div class="curso-icon">
+            <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+              <path d="M2 18h5l3-8 4 16 4-12 3 6 3-4h10" stroke="#d44f4c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="curso-info">
+            <div class="curso-name">Curso de ENMG — Fundamentos e Prática</div>
+            <div class="curso-meta">Online · Próxima turma: em breve</div>
+          </div>
+          <div class="curso-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <a href="https://www.kandel.com.br/cursos-e-eventos" class="curso-card rev d2">
+          <div class="curso-icon">
+            <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+              <ellipse cx="18" cy="18" rx="10" ry="6" stroke="#d44f4c" stroke-width="2"/>
+              <ellipse cx="18" cy="18" rx="6" ry="3" stroke="#d44f4c" stroke-width="1.5"/>
+              <circle cx="18" cy="18" r="2" fill="#d44f4c" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="curso-info">
+            <div class="curso-name">Workshop de TMS — Aplicações Clínicas</div>
+            <div class="curso-meta">Presencial · São Paulo, SP</div>
+          </div>
+          <div class="curso-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <a href="https://www.kandel.com.br/cursos-e-eventos" class="curso-card rev d3">
+          <div class="curso-icon">
+            <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+              <path d="M4 18C7 11 12 7 18 7s11 4 14 11c-3 7-8 11-14 11S7 25 4 18z" stroke="#d44f4c" stroke-width="2" fill="none"/>
+              <circle cx="18" cy="18" r="5" stroke="#d44f4c" stroke-width="2"/>
+              <circle cx="18" cy="18" r="2" fill="#d44f4c" opacity=".6"/>
+            </svg>
+          </div>
+          <div class="curso-info">
+            <div class="curso-name">Eletrorretinografia — Técnica Avançada</div>
+            <div class="curso-meta">Online · Gravado</div>
+          </div>
+          <div class="curso-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+        <a href="https://www.kandel.com.br/cursos-e-eventos" class="curso-card rev d4">
+          <div class="curso-icon">
+            <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+              <rect x="4" y="7" width="28" height="18" rx="3" stroke="#d44f4c" stroke-width="2"/>
+              <path d="M8 16h4l2-4 4 8 3-6 2 2h5" stroke="#d44f4c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="curso-info">
+            <div class="curso-name">Monitorização Intraoperatória — MIO Intensivo</div>
+            <div class="curso-meta">Presencial · Rio de Janeiro, RJ</div>
+          </div>
+          <div class="curso-arrow">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && (x.target.classList.add('vis'), io.unobserve(x.target))), {threshold:.1});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

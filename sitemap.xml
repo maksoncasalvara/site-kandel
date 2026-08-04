@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ═══════════════════════════════════
+       HOMEPAGE
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       CATÁLOGO GERAL
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       CATEGORIAS DE EQUIPAMENTOS
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-magnetica-transcraniana</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/audiologia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/ultrassonografia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletrorretinografia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/neurofeedback</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/sistema-cirurgico-ultrassonico</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-eletrica</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/polissonografia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — ENMG
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/skybox</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/litebox</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/neuro-mep</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/neuro-mep-micro</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/neuro-emg-micro</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroneuromiografia-e-potenciais-evocados/neuro-tox</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — EEG
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/eletroencefalografo-neuron-spectrum-65</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/neuron-spectrum-5</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/neuron-spectrum-4</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/neuron-spectrum-4p</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/neuron-spectrum-4-epm</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/neuron-spectrum-3</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/neuron-spectrum-am</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/nindex</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletroencefalografia/lp-eeg-aluguel</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.65</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — TMS / EMT
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-magnetica-transcraniana/equipamento-emt-neuro-msx</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-magnetica-transcraniana/neuro-ms</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-magnetica-transcraniana/equipamento-emt-neuro-msd</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-magnetica-transcraniana/neuronavegador-nena</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — AUDIOLOGIA
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/audiologia/neuro-audio</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/audiologia/audio-smart</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/audiologia/imitanciometro-atymp</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/audiologia/ascreen</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — MONITORIZAÇÃO INTRAOPERATÓRIA
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria/neuro-iom-32</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria/neuro-iom-16</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria/neuro-iom-4</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — ULTRASSOM
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/ultrassonografia/sistema-ultrassom-finus55</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/ultrassonografia/sistema-ultrassom-portatil-finus70</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/ultrassonografia/danus-10</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS DE PRODUTO — OUTROS
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/eletrorretinografia/eletrorretinografo-neuro-erg</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/neurofeedback/neuron-spectrum-neurofeedback</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/sistema-cirurgico-ultrassonico/bisturi-ultrassonico-innolcon</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/equipamentos/estimacao-eletrica/soterix</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       PÁGINAS INSTITUCIONAIS
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/nossa-historia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/fale-conosco</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/nossos-fornecedores</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/cursos-e-treinamento</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/blog</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.65</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/politica-de-privacidade</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/codigo-de-etica-e-conduta</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/termos-de-uso</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.30</priority>
+  </url>
+
+  <!-- ═══════════════════════════════════
+       SUPRIMENTOS
+  ═══════════════════════════════════ -->
+  <url>
+    <loc>https://www.kandel.com.br/eletrodos-eletroneuromiografia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/eletrodos-eletroencefalografia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/eletrodos-audiologia</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/eletrodos-monitorizacao-intraoperatoria</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.60</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/kits-eletrodos-monitorizacao-intraoperatoria</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/toucas-eletroencefalograma</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+  <url>
+    <loc>https://www.kandel.com.br/catalogo-completo-eletrodos</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.55</priority>
+  </url>
+
+</urlset>

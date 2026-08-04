@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eletroneuromiografia e Potenciais Evocados — Kandel Medical</title>
+  <meta name="description" content="Sistemas de última geração para diagnóstico neurofisiológico completo — da avaliação ambulatorial à pesquisa clínica avançada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --navy-deep: #0c1e2c; --navy: #1a3347;
+      --near-black: #0c1e2c; --dark-card: #0c1e2c;
+      --light: #f5f5f7; --gray: #86868b;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: #f5f5f7; color: #0c1e2c; -webkit-font-smoothing: antialiased; }
+
+    /* ── Hero ── */
+    .cat-hero {
+      background: linear-gradient(160deg, #0c1e2c 0%, #0f2538 55%, #1a3347 100%);
+      padding: 72px 28px 80px;
+      position: relative; overflow: hidden;
+      color: #fff;
+    }
+    .cat-hero::after {
+      content: '';
+      position: absolute; bottom: -100px; right: -60px;
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(212,79,76,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cat-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: rgba(255,255,255,0.35);
+      margin-bottom: 28px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+    .breadcrumb svg { opacity: 0.3; }
+
+    .cat-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .cat-title {
+      font-size: clamp(32px, 5vw, 64px); font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .cat-desc {
+      font-size: 18px; font-weight: 300; line-height: 1.65;
+      color: rgba(255,255,255,0.50); max-width: 560px;
+    }
+
+    /* ── Products ── */
+    .products-section { padding: 72px 28px 100px; background: #f5f5f7; }
+    .products-inner { max-width: 1200px; margin: 0 auto; }
+    .products-count {
+      font-size: 13px; color: rgba(12,30,44,0.35);
+      margin-bottom: 36px; letter-spacing: 0.02em;
+    }
+    .products-count span { color: rgba(12,30,44,0.60); font-weight: 600; }
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .prod-card {
+      background: #ffffff;
+      border-radius: 20px; overflow: hidden;
+      display: flex; flex-direction: column;
+      text-decoration: none; color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(12,30,44,0.06);
+      box-shadow: 0 4px 24px rgba(12,30,44,0.07);
+    }
+    .prod-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(12,30,44,0.13); }
+
+    .prod-img-wrap {
+      aspect-ratio: 4/3;
+      background: linear-gradient(145deg, #f0f0f4 0%, #e8e8ee 100%);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 28px;
+      border-radius: 14px;
+      margin: 12px 12px 0;
+      width: calc(100% - 24px);
+    }
+    .prod-img-wrap img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+    }
+    .prod-card:hover .prod-img-wrap img { transform: scale(1.04); }
+
+    .prod-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+    .prod-cat-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 8px;
+    }
+    .prod-name {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.02em;
+      color: #0c1e2c; margin-bottom: 10px; line-height: 1.2;
+    }
+    .prod-desc {
+      font-size: 14px; line-height: 1.65;
+      color: rgba(12,30,44,0.48); flex: 1; margin-bottom: 24px;
+    }
+    .prod-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 500;
+      color: var(--red);
+      transition: gap 0.2s;
+    }
+    .prod-card:hover .prod-cta { gap: 9px; }
+    .prod-cta svg { transition: transform 0.2s; }
+    .prod-card:hover .prod-cta svg { transform: translateX(2px); }
+
+    /* Badge "página disponível" */
+    .prod-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 600;
+      background: rgba(212,79,76,0.08); color: var(--red);
+      border: 1px solid rgba(212,79,76,0.18);
+      padding: 3px 9px; border-radius: 6px; margin-bottom: 10px;
+      width: fit-content;
+    }
+    .prod-badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--red); }
+
+    /* ── Suprimentos banner ── */
+    .suprimentos-banner {
+      margin-top: 64px;
+      background: #ffffff;
+      border: 1px solid rgba(12,30,44,0.07);
+      box-shadow: 0 2px 16px rgba(12,30,44,0.05);
+      border-radius: 20px; padding: 40px 44px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px;
+    }
+    .suprimentos-banner h3 {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.02em;
+      color: #0c1e2c; margin-bottom: 6px;
+    }
+    .suprimentos-banner p {
+      font-size: 14px; color: rgba(12,30,44,0.45); max-width: 420px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 12px 24px; border-radius: 980px;
+      font-family: var(--font); font-size: 15px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s ease; white-space: nowrap;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,79,76,0.35); }
+
+    /* ── Scroll reveal ── */
+    .rev { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.06s} .rev.d2{transition-delay:.12s} .rev.d3{transition-delay:.18s}
+    .rev.d4{transition-delay:.24s} .rev.d5{transition-delay:.30s} .rev.d6{transition-delay:.36s}
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .prod-grid { grid-template-columns: 1fr; }
+      .suprimentos-banner { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+      .cat-hero { padding: 48px 20px 56px; }
+      .products-section { padding: 48px 20px 72px; }
+    }
+  </style>
+  <script src="/nav.js" defer></script>
+  <script src="/footer.js" defer></script>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <nav class="breadcrumb">
+      <a href="/">Início</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>ENMG e Potenciais Evocados</span>
+    </nav>
+    <div class="cat-tag">Equipamentos</div>
+    <h1 class="cat-title">Eletroneuromiografia<br>e Potenciais Evocados</h1>
+    <p class="cat-desc">Sistemas de última geração para diagnóstico neurofisiológico completo — da avaliação ambulatorial à pesquisa clínica avançada.</p>
+  </div>
+</div>
+
+<!-- Products -->
+<section class="products-section">
+  <div class="products-inner">
+
+    <div class="products-count rev"><span>6</span> equipamentos disponíveis</div>
+
+    <div class="prod-grid">
+
+      <!-- Litebox — página interna -->
+      <a href="/enmg/litebox" class="prod-card rev d1">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/6cfa44_1447972663e7436db08c0a90316ba24c~mv2.jpg"
+               alt="Litebox">
+        </div>
+        <div class="prod-body">
+          <div class="prod-badge">Página disponível</div>
+          <div class="prod-cat-label">ENMG & PE</div>
+          <div class="prod-name">Litebox</div>
+          <div class="prod-desc">O EMG mais moderno do mundo. 3 canais, pulso bifásico, USB powered e compatível com MNIO.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Skybox — ainda no Wix -->
+      <a href="https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/skybox" class="prod-card rev d2" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/4c7acf_2b119f742cd1445aa7f7ea3db74998fb~mv2.jpg"
+               alt="Skybox">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">ENMG & PE</div>
+          <div class="prod-name">Skybox</div>
+          <div class="prod-desc">Neurocondução, eletromiografia e potenciais evocados em 5 canais com teclado dedicado embutido.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Neuro MEP Micro — ainda no Wix -->
+      <a href="https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep-micro" class="prod-card rev d3" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/4c7acf_d322a453dc0b4a8e8866c41a4326048f~mv2.png"
+               alt="Neuro MEP Micro">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">ENMG & PE</div>
+          <div class="prod-name">Neuro MEP Micro</div>
+          <div class="prod-desc">Agilidade e portabilidade com alta qualidade de aquisição. Sistema em 2 canais com teclado dedicado embutido.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Neuro-MEP-4 — ainda no Wix -->
+      <a href="https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep" class="prod-card rev d4" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/6cfa44_abf8737c8da7417b920349693d1440ea~mv2.png"
+               alt="Neuro-MEP-4">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">ENMG & PE</div>
+          <div class="prod-name">Neuro-MEP-4</div>
+          <div class="prod-desc">Sistema modular completo para eletromiografia e potenciais evocados.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Neuro EMG Micro — ainda no Wix -->
+      <a href="https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-emg-micro" class="prod-card rev d5" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/3aea12_e25ae254de744fd8b79fe24287a161eb~mv2.png"
+               alt="Neuro EMG Micro">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">ENMG & PE</div>
+          <div class="prod-name">Neuro EMG Micro</div>
+          <div class="prod-desc">Portabilidade e economia para eletromiografia ambulatorial e potenciais evocados somatossensitivos em 2 ou 4 canais.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Neuro TOX — ainda no Wix -->
+      <a href="https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-tox" class="prod-card rev d6" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/3aea12_114d9ffd9e2e450e89e6bcf210e64052~mv2.png"
+               alt="Neuro TOX">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">ENMG & Toxina Botulínica</div>
+          <div class="prod-name">Neuro TOX</div>
+          <div class="prod-desc">Estimulação de nervos periféricos para bloqueio, anestesia regional e injeção de toxina botulínica guiada por EMG.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Suprimentos banner -->
+    <div class="suprimentos-banner rev">
+      <div>
+        <h3>Precisa de eletrodos e suprimentos?</h3>
+        <p>Acesse nossa linha completa de eletrodos, consumíveis e acessórios para ENMG e Potenciais Evocados.</p>
+      </div>
+      <a href="https://loja.kandel.com.br/eletroneuromiografia" class="btn btn-red" target="_blank" rel="noopener">
+        Ver suprimentos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && (x.target.classList.add('vis'), io.unobserve(x.target))), {threshold:.08});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

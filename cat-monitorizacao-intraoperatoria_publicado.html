@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitorização Intraoperatória — Kandel Medical</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --navy-deep: #0c1e2c; --navy: #1a3347;
+      --near-black: #0c1e2c; --dark-card: #0c1e2c;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: #f5f5f7; color: #0c1e2c; -webkit-font-smoothing: antialiased; }
+
+    /* ── Hero ── */
+    .cat-hero {
+      background: linear-gradient(160deg, #0c1e2c 0%, #0f2538 55%, #1a3347 100%);
+      padding: 72px 28px 80px; position: relative; overflow: hidden;
+      color: #fff;
+    }
+    .cat-hero::after {
+      content: ''; position: absolute; bottom: -100px; right: -60px;
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(212,79,76,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .cat-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 28px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.7); }
+    .breadcrumb svg { opacity: 0.3; }
+
+    .cat-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .cat-title { font-size: clamp(32px, 5vw, 64px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 18px; }
+    .cat-desc { font-size: 18px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.50); max-width: 560px; }
+
+    /* ── Products ── */
+    .products-section { padding: 72px 28px 100px; background: #f5f5f7; }
+    .products-inner { max-width: 1200px; margin: 0 auto; }
+
+    .products-count { font-size: 13px; color: rgba(12,30,44,0.35); margin-bottom: 36px; }
+    .products-count span { color: rgba(12,30,44,0.60); font-weight: 600; }
+
+    .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+    .prod-card {
+      background: #ffffff; border-radius: 20px; overflow: hidden;
+      display: flex; flex-direction: column; text-decoration: none; color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(12,30,44,0.06);
+      box-shadow: 0 4px 24px rgba(12,30,44,0.07);
+    }
+    .prod-card:hover { transform: translateY(-4px); box-shadow: 0 24px 64px rgba(12,30,44,0.13); }
+
+    .prod-img-wrap {
+      width: calc(100% - 24px); aspect-ratio: 4/3;
+      background: linear-gradient(145deg, #f0f0f4 0%, #e8e8ee 100%);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; padding: 28px;
+      border-radius: 14px; margin: 12px 12px 0;
+    }
+    .prod-img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+    .prod-card:hover .prod-img-wrap img { transform: scale(1.04); }
+
+    .prod-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+    .prod-cat-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+    .prod-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #0c1e2c; margin-bottom: 10px; line-height: 1.2; }
+    .prod-desc { font-size: 14px; line-height: 1.65; color: rgba(12,30,44,0.48); flex: 1; margin-bottom: 24px; }
+    .prod-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--red); transition: gap 0.2s; }
+    .prod-card:hover .prod-cta { gap: 9px; }
+    .prod-cta svg { transition: transform 0.2s; }
+    .prod-card:hover .prod-cta svg { transform: translateX(2px); }
+
+    /* ── Banner ── */
+    .cta-banner {
+      margin-top: 64px;
+      background: #ffffff;
+      border: 1px solid rgba(12,30,44,0.07);
+      box-shadow: 0 2px 16px rgba(12,30,44,0.05);
+      border-radius: 20px; padding: 40px 44px;
+      display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    }
+    .cta-banner h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: #0c1e2c; margin-bottom: 6px; }
+    .cta-banner p { font-size: 14px; color: rgba(12,30,44,0.45); max-width: 420px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 12px 24px; border-radius: 980px;
+      font-family: var(--font); font-size: 15px; font-weight: 500;
+      text-decoration: none; white-space: nowrap; transition: all 0.2s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,79,76,0.35); }
+
+    /* ── Scroll reveal ── */
+    .rev { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.06s} .rev.d2{transition-delay:.12s} .rev.d3{transition-delay:.18s}
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) { .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) {
+      .prod-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; align-items: flex-start; padding: 28px 24px; }
+      .cat-hero { padding: 48px 20px 56px; }
+      .products-section { padding: 48px 20px 72px; }
+    }
+  </style>
+  <script src="/nav.js" defer></script>
+  <script src="/footer.js" defer></script>
+</head>
+<body>
+
+<div class="cat-hero">
+  <div class="cat-hero-inner">
+    <nav class="breadcrumb">
+      <a href="https://www.kandel.com.br/" target="_top">Início</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria" target="_top">Equipamentos</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Monitorização Intraoperatória</span>
+    </nav>
+    <div class="cat-tag">Equipamentos</div>
+    <h1 class="cat-title">Monitorização<br>Intraoperatória</h1>
+    <p class="cat-desc">Sistemas compactos e completos para monitorização neurofisiológica durante cirurgias — protegendo o sistema nervoso do paciente em tempo real.</p>
+  </div>
+</div>
+
+<section class="products-section">
+  <div class="products-inner">
+
+    <div class="products-count rev"><span>3</span> equipamentos disponíveis</div>
+
+    <div class="prod-grid">
+
+      <!-- Neuro IOM 32 -->
+      <a href="https://www.kandel.com.br/equipamento/monitoriza%C3%A7%C3%A3o-intraoperat%C3%B3ria/neuro-iom-32" class="prod-card rev d1" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/3aea12_4fe3c7934798476eb08b0c24d1ac23f2~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Neuro IOM 32">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">MNIO · 32 canais</div>
+          <div class="prod-name">Neuro IOM 32</div>
+          <div class="prod-desc">Sistema compacto para a mais completa monitorização neurofisiológica intraoperatória com 32 canais simultâneos.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Neuro IOM 16 -->
+      <a href="https://www.kandel.com.br/equipamento/monitoriza%C3%A7%C3%A3o-intraoperat%C3%B3ria/neuro-iom-16" class="prod-card rev d2" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/3aea12_17d91b756033435eab34959eb330f280~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Neuro IOM 16">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">MNIO · 16 canais</div>
+          <div class="prod-name">Neuro IOM 16</div>
+          <div class="prod-desc">Sistema compacto para a mais completa monitorização neurofisiológica intraoperatória com 16 canais simultâneos.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Neuro IOM 4 -->
+      <a href="https://www.kandel.com.br/equipamento/monitoriza%C3%A7%C3%A3o-intraoperat%C3%B3ria/neuro-iom-4" class="prod-card rev d3" target="_top">
+        <div class="prod-img-wrap">
+          <img src="https://static.wixstatic.com/media/4487e3_93a2d1c6d1944110a31f990fee50ea12~mv2.png/v1/fill/w_480,h_360,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image-empty-state.png"
+               alt="Neuro IOM 4">
+        </div>
+        <div class="prod-body">
+          <div class="prod-cat-label">MNIO · 4 canais</div>
+          <div class="prod-name">Neuro IOM 4</div>
+          <div class="prod-desc">Sistema de 4 canais dedicado para cirurgias de cabeça e pescoço. Totalmente alimentado via USB, oferece máxima segurança e sinal livre de interferências.</div>
+          <div class="prod-cta">
+            Ver detalhes
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="cta-banner rev">
+      <div>
+        <h3>Precisa de eletrodos e kits para MNIO?</h3>
+        <p>Acesse nossa linha completa de eletrodos, agulhas, cabos e kits de consumíveis para monitorização intraoperatória.</p>
+      </div>
+      <a href="https://loja.kandel.com.br/monitorizacao-intraoperatoria" class="btn btn-red" target="_top">
+        Ver suprimentos
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && (x.target.classList.add('vis'), io.unobserve(x.target))), {threshold:.08});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

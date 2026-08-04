@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kandel Medical — Sobre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --light: #f5f5f7; --near-black: #0c1e2c;
+      --gray: #86868b;
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--light); color: var(--near-black); -webkit-font-smoothing: antialiased; }
+
+    .section { padding: 100px 28px; }
+    .sec-inner { max-width: 1200px; margin: 0 auto; }
+    .sec-tag { font-size: 12px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    .sec-title { font-size: clamp(28px, 4vw, 50px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 14px; color: var(--near-black); }
+
+    /* ── Layout ── */
+    .sobre-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .sobre-text p {
+      font-size: 18px; font-weight: 300; line-height: 1.7;
+      color: var(--gray); margin-bottom: 24px;
+    }
+    .sobre-text p:last-child { margin-bottom: 0; }
+
+    /* ── Stats ── */
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+      border-radius: 22px; overflow: hidden;
+      background: rgba(12,30,44,0.07);
+    }
+    .stat-cell {
+      background: var(--light); padding: 36px 32px;
+      display: flex; flex-direction: column;
+    }
+    .stat-cell:nth-child(1) { border-radius: 20px 0 0 0; }
+    .stat-cell:nth-child(2) { border-radius: 0 20px 0 0; }
+    .stat-cell:nth-child(3) { border-radius: 0 0 0 20px; }
+    .stat-cell:nth-child(4) { border-radius: 0 0 20px 0; }
+
+    .stat-number {
+      font-size: clamp(36px, 4vw, 52px); font-weight: 700;
+      letter-spacing: -0.03em; color: var(--near-black); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-number span { color: var(--red); }
+    .stat-label { font-size: 14px; color: var(--gray); font-weight: 400; line-height: 1.4; }
+
+    /* ── Location badge ── */
+    .location-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 36px; padding: 12px 18px;
+      background: rgba(12,30,44,0.04); border-radius: 980px;
+      font-size: 14px; font-weight: 500; color: var(--near-black);
+    }
+    .location-badge svg { color: var(--red); flex-shrink: 0; }
+
+    /* ── CTA ── */
+    .sobre-cta { margin-top: 40px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 14px 28px; border-radius: 980px;
+      font-family: var(--font); font-size: 16px; font-weight: 500;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(212,79,76,0.35); }
+
+    /* ── Scroll reveal ── */
+    .rev { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.10s} .rev.d2{transition-delay:.18s}
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .sobre-wrap { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 620px) {
+      .section { padding: 64px 20px; }
+      .stat-cell { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="section" id="sobre">
+  <div class="sec-inner">
+
+    <div class="sobre-wrap">
+
+      <!-- Left: stats -->
+      <div class="rev">
+        <div class="stats-grid">
+          <div class="stat-cell">
+            <div class="stat-number">20<span>+</span></div>
+            <div class="stat-label">Anos de experiência no mercado médico</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-number">5<span>k+</span></div>
+            <div class="stat-label">Equipamentos instalados em todo o Brasil</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-number">30<span>+</span></div>
+            <div class="stat-label">Países de origem dos produtos distribuídos</div>
+          </div>
+          <div class="stat-cell">
+            <div class="stat-number">10<span>+</span></div>
+            <div class="stat-label">Especialidades médicas atendidas</div>
+          </div>
+        </div>
+
+        <div class="location-badge rev d1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Av. Dr. Chucri Zaidan, 940 — São Paulo, SP
+        </div>
+      </div>
+
+      <!-- Right: text -->
+      <div class="rev d2">
+        <div class="sec-tag">Quem Somos</div>
+        <h2 class="sec-title">Referência em tecnologia médica há mais de duas décadas.</h2>
+        <div class="sobre-text">
+          <p>A Kandel Medical é uma empresa brasileira especializada na importação, distribuição e suporte técnico de equipamentos médicos de alta tecnologia para neurologia, audiologia, oftalmologia e áreas correlatas.</p>
+          <p>Atuamos como parceiros estratégicos de hospitais, clínicas e pesquisadores, oferecendo não apenas equipamentos de ponta, mas também treinamento, suporte técnico dedicado e um ecossistema completo de suprimentos e acessórios.</p>
+        </div>
+        <div class="sobre-cta">
+          <a href="https://www.kandel.com.br/nossa-historia" class="btn btn-red">
+            Nossa história
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const io = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && (x.target.classList.add('vis'), io.unobserve(x.target))), {threshold:.1});
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
