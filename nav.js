@@ -27,7 +27,7 @@
       id: 'emt', label: 'Estimulação Magnética', href: '/equipamentos/estimulação-magnética-transcraniana',
       products: [
         { name: 'Neuro MS/D',  desc: 'TMS diagnóstica e terapêutica',  href: 'https://www.kandel.com.br/equipamentos/estimulacao-magnetica/neuro-ms-d' },
-        { name: 'Neuro MSX',   desc: 'TMS de alta frequência',         href: '/equipamentos/estimulação-magnética-transcraniana' },
+        { name: 'Neuro MSX',   desc: 'TMS de alta frequência',         href: '/equipamentos/estimulação-magnética-transcraniana/neuro-msx' },
       ]
     },
     {
