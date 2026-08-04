@@ -5,9 +5,9 @@
   ══════════════════════════════════════════════ */
   var CATS = [
     {
-      id: 'enmg', label: 'ENMG e Potenciais Evocados', href: '/enmg',
+      id: 'enmg', label: 'ENMG e Potenciais Evocados', href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados',
       products: [
-        { name: 'Litebox',         desc: '3 canais · USB · MNIO',               href: '/enmg/litebox' },
+        { name: 'Litebox',         desc: '3 canais · USB · MNIO',               href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados/litebox' },
         { name: 'Skybox',          desc: '5 canais · teclado dedicado',          href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/skybox' },
         { name: 'Neuro MEP Micro', desc: '2 canais · portátil',                 href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep-micro' },
         { name: 'Neuro-MEP-4',    desc: 'Sistema modular completo',             href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep' },
@@ -16,7 +16,7 @@
       ]
     },
     {
-      id: 'eeg', label: 'Eletroencefalografia', href: '/cat-eeg',
+      id: 'eeg', label: 'Eletroencefalografia', href: '/equipamentos/eletroencefalografia',
       products: [
         { name: 'Neuron Spectrum 65',    desc: 'EEG + PE · 24–128 canais',           href: 'https://www.kandel.com.br/equipamentos/eeg/neuron-spectrum-65' },
         { name: 'Neuron-Spectrum-4/EP',  desc: 'EEG ambulatorial · 21 canais',        href: 'https://www.kandel.com.br/equipamentos/eeg/neuron-spectrum-4ep' },
@@ -24,46 +24,46 @@
       ]
     },
     {
-      id: 'emt', label: 'Estimulação Magnética', href: '/cat-estimulacao-magnetica_publicado',
+      id: 'emt', label: 'Estimulação Magnética', href: '/equipamentos/estimulação-magnética-transcraniana',
       products: [
         { name: 'Neuro MS/D',  desc: 'TMS diagnóstica e terapêutica',  href: 'https://www.kandel.com.br/equipamentos/estimulacao-magnetica/neuro-ms-d' },
-        { name: 'Neuro MSX',   desc: 'TMS de alta frequência',         href: '/cat-estimulacao-magnetica_publicado' },
+        { name: 'Neuro MSX',   desc: 'TMS de alta frequência',         href: '/equipamentos/estimulação-magnética-transcraniana' },
       ]
     },
     {
-      id: 'mnio', label: 'Monitorização Intraoperatória', href: '/cat-monitorizacao-intraoperatoria_publicado',
+      id: 'mnio', label: 'Monitorização Intraoperatória', href: '/equipamentos/monitorização-intraoperatória',
       products: [
         { name: 'Neuro IOM 32', desc: '32 canais · sala cirúrgica',     href: 'https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria/neuro-iom-32' },
         { name: 'Neuro IOM',    desc: 'MNIO compacto e modular',        href: 'https://www.kandel.com.br/equipamentos/monitorizacao-intraoperatoria/neuro-iom' },
       ]
     },
     {
-      id: 'audio', label: 'Audiologia', href: '/cat-audiologia_publicada',
+      id: 'audio', label: 'Audiologia', href: '/equipamentos/audiologia',
       products: [
         { name: 'Neuro-Audio',    desc: 'ABR · AMLR · DPOAE · TEOAE',   href: 'https://www.kandel.com.br/equipamentos/audiologia/neuro-audio' },
         { name: 'Neuro-Audio-04', desc: 'Screening neonatal avançado',    href: 'https://www.kandel.com.br/equipamentos/audiologia/neuro-audio-04' },
       ]
     },
     {
-      id: 'ultra', label: 'Ultrassonografia', href: '/cat-ultrassom',
+      id: 'ultra', label: 'Ultrassonografia', href: '/equipamentos/ultrassonografia',
       products: [
         { name: 'Echo Blaster 128', desc: 'Ultrassom diagnóstico portátil', href: 'https://www.kandel.com.br/equipamentos/ultrassonografia' },
       ]
     },
     {
-      id: 'erg', label: 'Eletrorretinografia', href: '/cat-eletrorretinografia',
+      id: 'erg', label: 'Eletrorretinografia', href: '/equipamentos/eletrorretinografia',
       products: [
         { name: 'RetiPort',        desc: 'ERG · VEP · EOG · mfERG',   href: 'https://www.kandel.com.br/equipamentos/eletrorretinografia/retiport' },
       ]
     },
     {
-      id: 'bio', label: 'Neurofeedback', href: '/cat-biofeedback',
+      id: 'bio', label: 'Neurofeedback', href: '/equipamentos/neurofeedback',
       products: [
         { name: 'Neuro Praxis',    desc: 'Biofeedback e neurofeedback', href: 'https://www.kandel.com.br/equipamentos/neurofeedback' },
       ]
     },
     {
-      id: 'cirurg', label: 'Sist. Cirúrgico Ultrassônico', href: '/cat-sistema-cirurgico-ultrassonico',
+      id: 'cirurg', label: 'Sist. Cirúrgico Ultrassônico', href: '/equipamentos/sistema-cirurgico-ultrassonico',
       products: [
         { name: 'Finus 55', desc: 'Ablação ultrassônica cirúrgica', href: 'https://www.kandel.com.br/equipamentos/sistema-cirurgico-ultrassonico/finus-55' },
       ]
