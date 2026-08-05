@@ -312,9 +312,10 @@
             '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>',
           '</a>',
         '</li>',
-        '<li><a href="https://www.kandel.com.br/cursos-e-treinamento" target="_top">Cursos</a></li>',
-        '<li><a href="https://www.kandel.com.br/nossa-historia" target="_top">Sobre</a></li>',
-        '<li><a href="https://www.kandel.com.br/fale-conosco" target="_top">Fale Conosco</a></li>',
+        '<li><a href="https://loja.kandel.com.br/" target="_blank" rel="noopener">Loja Online</a></li>',
+        '<li><a href="https://cursos.kandel.com.br/" target="_blank" rel="noopener">Cursos e Treinamentos</a></li>',
+        '<li><a href="/blog">Blog</a></li>',
+        '<li><a href="https://atendimento.kandel.com.br/kb" target="_blank" rel="noopener">Suporte Técnico</a></li>',
       '</ul>',
       '<a class="kd-cta" href="https://www.kandel.com.br/fale-conosco" target="_top">Solicitar demo</a>',
       '<button class="kd-burger" id="kdBurger" aria-label="Menu">',
@@ -381,9 +382,10 @@
   });
   mobHTML += '</div>';
   mobHTML += '<div class="mob-divider"></div>';
-  mobHTML += '<a class="mob-link" href="https://www.kandel.com.br/cursos-e-treinamento" target="_top">Cursos</a>';
-  mobHTML += '<a class="mob-link" href="https://www.kandel.com.br/nossa-historia" target="_top">Sobre</a>';
-  mobHTML += '<a class="mob-link" href="https://www.kandel.com.br/fale-conosco" target="_top">Fale Conosco</a>';
+  mobHTML += '<a class="mob-link" href="https://loja.kandel.com.br/" target="_blank" rel="noopener">Loja Online</a>';
+  mobHTML += '<a class="mob-link" href="https://cursos.kandel.com.br/" target="_blank" rel="noopener">Cursos e Treinamentos</a>';
+  mobHTML += '<a class="mob-link" href="/blog">Blog</a>';
+  mobHTML += '<a class="mob-link" href="https://atendimento.kandel.com.br/kb" target="_blank" rel="noopener">Suporte Técnico</a>';
   mobHTML += '<a class="mob-cta" href="https://www.kandel.com.br/fale-conosco" target="_top">Solicitar demo</a>';
 
   mob.innerHTML = mobHTML;
