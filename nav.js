@@ -7,7 +7,7 @@
     {
       id: 'enmg', label: 'ENMG e Potenciais Evocados', href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados',
       products: [
-        { name: 'Litebox',         desc: '3 canais · USB · MNIO',               href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados/litebox' },
+        { name: 'Litebox',         desc: '3 canais · USB · MNIO',               href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados/litebox-light' },
         { name: 'Skybox',          desc: '5 canais · teclado dedicado',          href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/skybox' },
         { name: 'Neuro MEP Micro', desc: '2 canais · portátil',                 href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep-micro' },
         { name: 'Neuro-MEP-4',    desc: 'Sistema modular completo',             href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep' },
