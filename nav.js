@@ -421,7 +421,7 @@
 
   equipLi.addEventListener('mouseenter', openMega);
   equipLi.addEventListener('mouseleave', closeMega);
-  mega.addEventListener('mouseenter', openMega);
+  mega.addEventListener('mouseenter', function () { clearTimeout(closeTimer); });
   mega.addEventListener('mouseleave', closeMega);
 
   // — Mega menu: trocar categoria ativa
