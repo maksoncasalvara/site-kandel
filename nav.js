@@ -40,7 +40,7 @@
     {
       id: 'audio', label: 'Audiologia', href: '/equipamentos/audiologia',
       products: [
-        { name: 'Neuro-Audio',    desc: 'ABR · AMLR · DPOAE · TEOAE',   href: 'https://www.kandel.com.br/equipamentos/audiologia/neuro-audio' },
+        { name: 'Neuro-Audio',    desc: 'ABR · AMLR · DPOAE · TEOAE',   href: '/equipamentos/audiologia/neuro-audio' },
         { name: 'Neuro-Audio-04', desc: 'Screening neonatal avançado',    href: 'https://www.kandel.com.br/equipamentos/audiologia/neuro-audio-04' },
       ]
     },

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neuro Audio — Plataforma de Audiologia Clínica | Kandel Medical</title>
+  <meta name="description" content="Solução completa para aquisição de PEA e OAE. Plataforma modular, portátil, alimentada via USB. PEATE, ASSR, OAE, VEMP, P300 e mais — em um único dispositivo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #d44f4c; --red-hover: #b8413f;
+      --navy-deep: #0c1e2c; --navy: #1a3347;
+      --near-black: #0c1e2c;
+      --light: #f5f5f7; --white: #ffffff;
+      --text: #0c1e2c;
+      --text-secondary: rgba(12,30,44,0.50);
+      --text-tertiary: rgba(12,30,44,0.35);
+      --border: rgba(12,30,44,0.07);
+      --card-shadow: 0 4px 24px rgba(12,30,44,0.06);
+      --card-shadow-hover: 0 24px 64px rgba(12,30,44,0.12);
+      --font: 'Outfit', system-ui, -apple-system, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--light); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+    /* ═══════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════ */
+    .hero {
+      background: linear-gradient(160deg, #080f17 0%, #0c1e2c 45%, #0f2538 100%);
+      min-height: 92vh; display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center; padding: 100px 64px 80px; gap: 48px;
+      position: relative; overflow: hidden; color: #fff;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 50%, rgba(212,79,76,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; color: rgba(255,255,255,0.30); margin-bottom: 36px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.30); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+    .breadcrumb svg { opacity: .3; }
+    .hero-label { font-size: 12px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+    .hero-title {
+      font-size: clamp(52px, 6vw, 84px); font-weight: 800;
+      letter-spacing: -.05em; line-height: .95; margin-bottom: 24px; color: #fff;
+    }
+    .hero-title span { color: var(--red); }
+    .hero-tagline { font-size: 20px; font-weight: 300; line-height: 1.6; color: rgba(255,255,255,0.55); margin-bottom: 14px; max-width: 440px; }
+    .hero-sub { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.35); max-width: 420px; margin-bottom: 44px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 980px;
+      font-family: var(--font); font-size: 15px; font-weight: 500;
+      text-decoration: none; transition: all .22s ease;
+    }
+    .btn-red { background: var(--red); color: #fff; }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(212,79,76,.38); }
+    .btn-ghost-dark { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.80); }
+    .btn-ghost-dark:hover { background: rgba(255,255,255,.14); transform: translateY(-1px); }
+    .btn-ghost-light { background: rgba(12,30,44,.04); border: 1px solid rgba(12,30,44,.12); color: var(--text); }
+    .btn-ghost-light:hover { background: rgba(12,30,44,.08); transform: translateY(-1px); }
+    .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+    .hero-product-img {
+      max-height: 580px; max-width: 100%; object-fit: contain;
+      filter: drop-shadow(0 40px 80px rgba(12,30,44,.7));
+      animation: floatImg 5s ease-in-out infinite;
+    }
+    @keyframes floatImg { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+    /* ═══════════════════════════════════════
+       SPECS STRIP
+    ═══════════════════════════════════════ */
+    .specs-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 16px rgba(12,30,44,.04);
+      padding: 28px 64px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap;
+    }
+    .spec-item {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 16px 40px; text-align: center;
+      border-right: 1px solid rgba(12,30,44,.07);
+    }
+    .spec-item:last-child { border-right: none; }
+    .spec-value { font-size: 26px; font-weight: 700; letter-spacing: -.04em; color: var(--text); }
+    .spec-value span { color: var(--red); }
+    .spec-key { font-size: 11px; font-weight: 500; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: .07em; margin-top: 2px; }
+
+    /* ═══════════════════════════════════════
+       SECTION COMMONS
+    ═══════════════════════════════════════ */
+    section { padding: 88px 64px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px,3.5vw,48px); font-weight: 700; letter-spacing: -.04em; line-height: 1.1; margin-bottom: 16px; color: var(--text); }
+    .section-desc { font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--text-secondary); max-width: 600px; }
+
+    /* ═══════════════════════════════════════
+       INTRO
+    ═══════════════════════════════════════ */
+    .intro-section { background: var(--light); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .intro-text p { font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px; }
+    .intro-text p:last-child { margin-bottom: 0; }
+    .intro-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(212,79,76,.07); border: 1px solid rgba(212,79,76,.18);
+      color: rgba(12,30,44,.65); font-size: 13px; font-weight: 500;
+      padding: 7px 14px; border-radius: 980px;
+    }
+    .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; }
+    .intro-visual { display: flex; justify-content: center; align-items: center; }
+    .intro-product-img {
+      max-width: 420px; width: 100%; object-fit: contain;
+      filter: drop-shadow(0 24px 48px rgba(12,30,44,.12));
+    }
+
+    /* ═══════════════════════════════════════
+       FEATURES
+    ═══════════════════════════════════════ */
+    .features-section { background: var(--white); }
+    .features-header { margin-bottom: 52px; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-card {
+      background: var(--light); border-radius: 20px;
+      border: 1px solid var(--border); padding: 32px 28px;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .feature-card:hover { box-shadow: var(--card-shadow-hover); transform: translateY(-3px); }
+    .feature-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(212,79,76,.08);
+      display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .feature-name { font-size: 17px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; color: var(--text); }
+    .feature-desc { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
+    .feature-highlight {
+      display: inline-block; margin-top: 14px;
+      font-size: 12px; font-weight: 600; color: var(--red);
+      background: rgba(212,79,76,.08); padding: 4px 10px; border-radius: 6px;
+    }
+
+    /* ═══════════════════════════════════════
+       MÓDULOS / SOFTWARE
+    ═══════════════════════════════════════ */
+    .software-section { background: var(--light); }
+    .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 48px; }
+    .sw-module {
+      background: var(--white); border-radius: 16px;
+      border: 1px solid var(--border); padding: 24px 26px;
+      box-shadow: var(--card-shadow);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .sw-module:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); }
+    .sw-module-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .sw-module-name { font-size: 15px; font-weight: 700; color: var(--text); }
+    .sw-tag { font-size: 11px; font-weight: 600; background: rgba(212,79,76,.08); color: var(--red); padding: 2px 8px; border-radius: 5px; flex-shrink: 0; }
+    .sw-module-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+    .sw-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .sw-chip { font-size: 11px; font-weight: 500; color: var(--text-tertiary); background: var(--light); border: 1px solid var(--border); padding: 3px 8px; border-radius: 5px; }
+
+    /* ═══════════════════════════════════════
+       APLICAÇÕES CLÍNICAS
+    ═══════════════════════════════════════ */
+    .apps-section { background: var(--white); }
+    .apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+    .app-card {
+      background: var(--light); border-radius: 20px; padding: 32px 28px;
+      border: 1px solid var(--border);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .app-card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+    .app-card-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(212,79,76,.08); display: flex; align-items: center;
+      justify-content: center; margin-bottom: 18px;
+    }
+    .app-card-name { font-size: 17px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 10px; color: var(--text); }
+    .app-card-desc { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
+
+    /* ═══════════════════════════════════════
+       FEEDBACK DE CLIENTES
+    ═══════════════════════════════════════ */
+    .testimonials-section { background: var(--light); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+    .t-card {
+      background: var(--white); border-radius: 20px; padding: 32px 28px;
+      border: 1px solid var(--border); box-shadow: var(--card-shadow);
+    }
+    .t-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .t-star { color: #f5a623; font-size: 14px; }
+    .t-text { font-size: 14px; line-height: 1.75; color: var(--text-secondary); margin-bottom: 24px; font-style: italic; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, #0c1e2c, #1a3347);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .t-name { font-size: 14px; font-weight: 700; color: var(--text); }
+    .t-role { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+
+    /* ═══════════════════════════════════════
+       CTA BANNER
+    ═══════════════════════════════════════ */
+    .cta-section { background: var(--white); }
+    .cta-banner {
+      background: linear-gradient(135deg, #0c1e2c 0%, #1a3347 100%);
+      border-radius: 24px; padding: 56px 60px;
+      display: flex; align-items: center; justify-content: space-between; gap: 40px;
+    }
+    .cta-banner h2 { font-size: 32px; font-weight: 700; letter-spacing: -.03em; margin-bottom: 10px; color: #fff; }
+    .cta-banner p { font-size: 16px; color: rgba(255,255,255,.45); max-width: 480px; }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
+
+    /* ═══════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════ */
+    .rev { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .rev.vis { opacity: 1; transform: none; }
+    .rev.d1{transition-delay:.08s} .rev.d2{transition-delay:.16s} .rev.d3{transition-delay:.24s}
+    .rev.d4{transition-delay:.32s} .rev.d5{transition-delay:.40s}
+
+    /* ═══════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 80px 40px 60px; text-align: center; }
+      .hero-visual { order: -1; max-height: 280px; }
+      .hero-product-img { max-height: 240px; }
+      .hero-tagline, .hero-sub { max-width: 100%; }
+      .hero-actions { justify-content: center; }
+      .breadcrumb { justify-content: center; }
+      .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 64px 32px; }
+      .specs-strip { padding: 20px 32px; }
+      .spec-item { padding: 12px 24px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 72px 24px 48px; }
+      .features-grid { grid-template-columns: 1fr; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .cta-banner { flex-direction: column; padding: 36px 28px; }
+      section { padding: 56px 24px; }
+      .specs-strip { flex-direction: column; }
+      .spec-item { border-right: none; border-bottom: 1px solid var(--border); width: 100%; }
+      .spec-item:last-child { border-bottom: none; }
+    }
+  </style>
+  <script src="/nav.js" defer></script>
+  <script src="/footer.js" defer></script>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero">
+  <div class="hero-text">
+    <nav class="breadcrumb">
+      <a href="/">Início</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="/equipamentos/audiologia">Audiologia</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      <span>Neuro Audio</span>
+    </nav>
+    <div class="hero-label">Audiologia Clínica</div>
+    <h1 class="hero-title">Neuro<span>Audio</span></h1>
+    <p class="hero-tagline">O melhor. Para os melhores.</p>
+    <p class="hero-sub">Solução completa para aquisição de PEA e OAE. Plataforma modular, portátil e alimentada via USB — do screening neonatal ao diagnóstico especializado.</p>
+    <div class="hero-actions">
+      <a href="https://www.kandel.com.br/fale-conosco" class="btn btn-red" target="_top">
+        Solicitar orçamento
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="https://www.kandel.com.br/equipamentos/audiologia/neuro-audio" class="btn btn-ghost-dark" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ver ficha técnica
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img class="hero-product-img"
+         src="https://static.wixstatic.com/media/8bbde3_f8428db2f27f440ea068e16ecd971734~mv2.png"
+         alt="Neuro Audio — Plataforma de Audiologia Neurosoft">
+  </div>
+</div>
+
+<!-- ═══════════════════ SPECS STRIP ═══════════════════ -->
+<div class="specs-strip">
+  <div class="spec-item">
+    <div class="spec-value">2</div>
+    <div class="spec-key">Canais de amplificação</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value"><span>USB</span></div>
+    <div class="spec-key">Alimentação</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">10<span>+</span></div>
+    <div class="spec-key">Módulos de exame</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">16<span>kHz</span></div>
+    <div class="spec-key">Audiometria tonal</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value"><span>IP</span>34</div>
+    <div class="spec-key">Proteção</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ INTRO ═══════════════════ -->
+<section class="intro-section">
+  <div class="section-inner">
+    <div class="intro-grid">
+      <div class="intro-text rev">
+        <div class="section-eyebrow">Visão geral</div>
+        <h2 class="section-title">Feito para você.<br>Pronto para qualquer exame.</h2>
+        <p>O Neuro Audio é um sistema de audiologia clínica de alta performance desenvolvido pela Neurosoft. Com dois canais de amplificação e sistema completo para estimulação auditiva, oferece altíssima qualidade de aquisição em um design compacto e portátil.</p>
+        <p>Sua alimentação via USB elimina a necessidade de tomadas aterradas, reduzindo interferências elétricas e permitindo uso em qualquer ambiente — do consultório à UTI neonatal.</p>
+        <div class="intro-badges">
+          <span class="badge">Portátil</span>
+          <span class="badge">Alimentação USB</span>
+          <span class="badge">2 canais</span>
+          <span class="badge">Plataforma modular</span>
+          <span class="badge">Multi-transdutores</span>
+          <span class="badge">Alta qualidade de sinal</span>
+        </div>
+      </div>
+      <div class="intro-visual rev d2">
+        <img class="intro-product-img"
+             src="https://static.wixstatic.com/media/8bbde3_12ce1bebe06c465eaf30edc6247ecced~mv2.png"
+             alt="Neuro Audio — Vista frontal">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FEATURES ═══════════════════ -->
+<section class="features-section">
+  <div class="section-inner">
+    <div class="features-header">
+      <div class="section-eyebrow rev">Diferenciais</div>
+      <h2 class="section-title rev d1">Por que o Neuro Audio?</h2>
+      <p class="section-desc rev d2">Cada detalhe foi projetado para superar suas expectativas em desempenho e praticidade.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card rev d1">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        </div>
+        <div class="feature-name">Portabilidade real</div>
+        <div class="feature-desc">Design compacto e leve, ideal para uso em múltiplos ambientes — consultório, hospital, UTI neonatal ou visitas domiciliares.</div>
+        <span class="feature-highlight">Sem tomada aterrada</span>
+      </div>
+      <div class="feature-card rev d2">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="feature-name">Alta qualidade de sinal</div>
+        <div class="feature-desc">Dois canais de amplificação com eletrônica de precisão para aquisição de potenciais de baixíssima amplitude com mínimo ruído.</div>
+        <span class="feature-highlight">Latências precisas</span>
+      </div>
+      <div class="feature-card rev d3">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="feature-name">Plataforma modular</div>
+        <div class="feature-desc">Expanda as capacidades do seu equipamento conforme sua prática clínica evoluir. Ative novos módulos sem trocar o hardware.</div>
+        <span class="feature-highlight">Investimento escalável</span>
+      </div>
+      <div class="feature-card rev d1">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <div class="feature-name">Multi-transdutores</div>
+        <div class="feature-desc">Compatível com fones supra-aurais, inserts, sondas de OAE e eletrodos de superfície — total flexibilidade de protocolo.</div>
+        <span class="feature-highlight">TDH-39 · ER-3A · Insert</span>
+      </div>
+      <div class="feature-card rev d2">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="feature-name">Exames rápidos</div>
+        <div class="feature-desc">Algoritmos otimizados reduzem o tempo de coleta sem comprometer a qualidade — mais pacientes atendidos com menos esforço.</div>
+        <span class="feature-highlight">Triagem em minutos</span>
+      </div>
+      <div class="feature-card rev d3">
+        <div class="feature-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="feature-name">Software intuitivo</div>
+        <div class="feature-desc">Interface projetada para o fluxo clínico real — relatórios automáticos, banco de dados integrado e laudos prontos para impressão.</div>
+        <span class="feature-highlight">Curva de aprendizado mínima</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MÓDULOS ═══════════════════ -->
+<section class="software-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Módulos</div>
+    <h2 class="section-title rev d1">Tudo em um único dispositivo.</h2>
+    <p class="section-desc rev d2">Seja qual for a tarefa, com o Neuro Audio você tem menos para aprender e muito mais para fazer.</p>
+    <div class="modules-grid">
+      <div class="sw-module rev d1">
+        <div class="sw-module-header">
+          <div class="sw-module-name">PEATE / BERA</div>
+          <span class="sw-tag">PEA</span>
+        </div>
+        <div class="sw-module-desc">Potencial Evocado Auditivo de Tronco Encefálico para diagnóstico de curta, média e longa latência. Inclui triagem neonatal e avaliação diagnóstica completa.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">Click</span>
+          <span class="sw-chip">Chirp</span>
+          <span class="sw-chip">Tone Burst</span>
+          <span class="sw-chip">Chirp Level Specific</span>
+        </div>
+      </div>
+      <div class="sw-module rev d2">
+        <div class="sw-module-header">
+          <div class="sw-module-name">ASSR / Multi-ASSR</div>
+          <span class="sw-tag">PEA</span>
+        </div>
+        <div class="sw-module-desc">Resposta Auditiva do Estado Estável com pesquisa semi-automática de limiar auditivo. O Multi-ASSR permite avaliação simultânea de múltiplas frequências.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">500 Hz</span>
+          <span class="sw-chip">1 kHz</span>
+          <span class="sw-chip">2 kHz</span>
+          <span class="sw-chip">4 kHz</span>
+        </div>
+      </div>
+      <div class="sw-module rev d3">
+        <div class="sw-module-header">
+          <div class="sw-module-name">EOATE / EOAPD</div>
+          <span class="sw-tag">OAE</span>
+        </div>
+        <div class="sw-module-desc">Otoemissões Evocadas Transientes e por Produto de Distorção. Triagem e diagnóstico com capacidade de avaliação em altas frequências.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">Triagem</span>
+          <span class="sw-chip">Diagnóstico</span>
+          <span class="sw-chip">Altas frequências</span>
+        </div>
+      </div>
+      <div class="sw-module rev d4">
+        <div class="sw-module-header">
+          <div class="sw-module-name">VEMP</div>
+          <span class="sw-tag">Vestibular</span>
+        </div>
+        <div class="sw-module-desc">Potencial Evocado Miogênico Vestibular para avaliação da função sacular e utricular. Disponível nas modalidades cervical (cVEMP) e ocular (oVEMP).</div>
+        <div class="sw-chips">
+          <span class="sw-chip">cVEMP</span>
+          <span class="sw-chip">oVEMP</span>
+        </div>
+      </div>
+      <div class="sw-module rev d1">
+        <div class="sw-module-header">
+          <div class="sw-module-name">ECochG</div>
+          <span class="sw-tag">Coclear</span>
+        </div>
+        <div class="sw-module-desc">Eletrococleografia para avaliação da função coclear e diagnóstico diferencial de Síndrome de Ménière e hidropsia endolinfática.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">SP/AP ratio</span>
+          <span class="sw-chip">Transtimpânico</span>
+        </div>
+      </div>
+      <div class="sw-module rev d2">
+        <div class="sw-module-header">
+          <div class="sw-module-name">P300 / MMN</div>
+          <span class="sw-tag">Cognitivo</span>
+        </div>
+        <div class="sw-module-desc">Potencial cognitivo P300 com botão de resposta para o paciente, e Mismatch Negativity (MMN) para avaliação do processamento auditivo central.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">Oddball</span>
+          <span class="sw-chip">Botão resposta</span>
+          <span class="sw-chip">DPAC</span>
+        </div>
+      </div>
+      <div class="sw-module rev d3">
+        <div class="sw-module-header">
+          <div class="sw-module-name">MLR / LLR</div>
+          <span class="sw-tag">PEA</span>
+        </div>
+        <div class="sw-module-desc">Potenciais de Média e Longa Latência para avaliação cortical auditiva e processamento auditivo central.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">MLR</span>
+          <span class="sw-chip">CAEP</span>
+          <span class="sw-chip">N1-P2</span>
+        </div>
+      </div>
+      <div class="sw-module rev d4">
+        <div class="sw-module-header">
+          <div class="sw-module-name">Audiometria Tonal</div>
+          <span class="sw-tag">Tonal</span>
+        </div>
+        <div class="sw-module-desc">Audiometria tonal com capacidade de pesquisa de limiares até 16.000 Hz — essencial para avaliação de perdas em altas frequências.</div>
+        <div class="sw-chips">
+          <span class="sw-chip">250 Hz – 16 kHz</span>
+          <span class="sw-chip">Altas frequências</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ APLICAÇÕES CLÍNICAS ═══════════════════ -->
+<section class="apps-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Aplicações</div>
+    <h2 class="section-title rev d1">Para cada especialidade,<br>uma solução precisa.</h2>
+    <p class="section-desc rev d2">O Neuro Audio acompanha o profissional em todas as etapas da avaliação auditiva.</p>
+    <div class="apps-grid">
+      <div class="app-card rev d1">
+        <div class="app-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="app-card-name">Triagem Neonatal</div>
+        <div class="app-card-desc">PEATE e OAE para rastreamento auditivo em recém-nascidos e neonatos de risco — rápido, confiável e adaptado ao ambiente de UTI.</div>
+      </div>
+      <div class="app-card rev d2">
+        <div class="app-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="app-card-name">Diagnóstico Audiológico</div>
+        <div class="app-card-desc">Avaliação completa da via auditiva periférica e central com PEATE, ASSR, OAE e audiometria tonal até 16 kHz.</div>
+      </div>
+      <div class="app-card rev d3">
+        <div class="app-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+        </div>
+        <div class="app-card-name">Avaliação Vestibular</div>
+        <div class="app-card-desc">VEMP cervical e ocular para investigação da função sacularе utricular — complemento essencial em casos de tontura e desequilíbrio.</div>
+      </div>
+      <div class="app-card rev d4">
+        <div class="app-card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="app-card-name">Avaliação Cognitiva e PAC</div>
+        <div class="app-card-desc">P300 e MMN para investigação de processamento auditivo central — valioso em crianças com dificuldade de aprendizagem e adultos com suspeita de déficit cognitivo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FEEDBACK DE CLIENTES ═══════════════════ -->
+<section class="testimonials-section">
+  <div class="section-inner">
+    <div class="section-eyebrow rev">Depoimentos</div>
+    <h2 class="section-title rev d1">O que nossos clientes dizem.</h2>
+    <p class="section-desc rev d2">Profissionais de todo o Brasil confiam no Neuro Audio para elevar a qualidade dos seus serviços.</p>
+    <div class="testimonials-grid">
+      <div class="t-card rev d1">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-text">"O Neuro Audio transformou a rotina da nossa clínica. A qualidade de sinal é excepcional e a portabilidade via USB nos permite atender pacientes na UTI neonatal sem nenhuma dificuldade com interferência elétrica."</p>
+        <div class="t-author">
+          <div class="t-avatar">MF</div>
+          <div>
+            <div class="t-name">Dra. Marina Ferreira</div>
+            <div class="t-role">Fonoaudióloga · Clínica AudioVida · São Paulo</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card rev d2">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-text">"Utilizamos o Neuro Audio há mais de 3 anos no programa de triagem neonatal do hospital. A plataforma modular nos permitiu expandir de PEATE para ASSR e OAE sem precisar trocar o equipamento. Excelente investimento."</p>
+        <div class="t-author">
+          <div class="t-avatar">RS</div>
+          <div>
+            <div class="t-name">Dr. Ricardo Souza</div>
+            <div class="t-role">Otorrinolaringologista · Hospital São Lucas · Curitiba</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card rev d3">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <p class="t-text">"O suporte da Kandel é diferenciado. Além da qualidade técnica do Neuro Audio, o treinamento da equipe e o atendimento pós-venda nos deram a confiança de que fizemos a escolha certa para o nosso serviço."</p>
+        <div class="t-author">
+          <div class="t-avatar">PC</div>
+          <div>
+            <div class="t-name">Profa. Patrícia Costa</div>
+            <div class="t-role">Audiologista · Universidade Federal · Porto Alegre</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CTA ═══════════════════ -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-banner rev">
+      <div>
+        <h2>Pronto para elevar sua clínica?</h2>
+        <p>Fale com um especialista Kandel e descubra como o Neuro Audio pode transformar sua prática em audiologia.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="https://www.kandel.com.br/fale-conosco" class="btn btn-red" target="_top">
+          Solicitar demonstração
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="/equipamentos/audiologia" class="btn btn-ghost-light">
+          Ver categoria
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.rev').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>
