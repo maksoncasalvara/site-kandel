@@ -189,7 +189,7 @@
     '}',
     '.kd-prod-set{',
       'position:absolute;top:0;left:28px;right:0;',
-      'display:grid;grid-template-columns:repeat(2,1fr);gap:6px;',
+      'display:grid;grid-template-columns:repeat(3,1fr);gap:6px;',
       'opacity:0;visibility:hidden;pointer-events:none;',
       'transition:opacity .18s;',
     '}',
@@ -224,50 +224,27 @@
     '}',
     '.kd-prod-footer:hover{color:#b8413f;}',
 
-    /* preview panel */
-    '.kd-mega-preview{',
-      'width:220px;flex-shrink:0;',
-      'border-left:1px solid rgba(12,30,44,0.07);',
-      'padding-left:24px;',
-      'display:flex;flex-direction:column;gap:12px;',
+    /* product image tooltip */
+    '.kd-prod-item{position:relative;}',
+    '.kd-prod-tip{',
+      'position:absolute;top:calc(100% + 10px);left:50%;',
+      'transform:translateX(-50%) translateY(-6px);',
+      'width:180px;',
+      'background:#fff;border-radius:12px;',
+      'box-shadow:0 8px 32px rgba(12,30,44,0.14);',
+      'border:1px solid rgba(12,30,44,0.08);',
+      'padding:8px;',
+      'opacity:0;visibility:hidden;pointer-events:none;',
+      'transition:opacity .18s,transform .18s,visibility .18s;',
+      'z-index:10;',
     '}',
-    '.kd-preview-box{',
-      'width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;',
-      'background:linear-gradient(135deg,rgba(12,30,44,0.04) 0%,rgba(12,30,44,0.08) 100%);',
-      'border:1px solid rgba(12,30,44,0.07);',
-      'display:flex;align-items:center;justify-content:center;',
-      'transition:background .2s;',
+    '.kd-prod-item:hover .kd-prod-tip{',
+      'opacity:1;visibility:visible;',
+      'transform:translateX(-50%) translateY(0);',
     '}',
-    '.kd-preview-img{',
-      'width:100%;height:100%;object-fit:contain;',
-      'display:none;',
-    '}',
-    '.kd-preview-img.visible{display:block;}',
-    '.kd-preview-ph{',
-      'display:flex;flex-direction:column;align-items:center;gap:10px;',
-      'padding:16px;text-align:center;',
-    '}',
-    '.kd-preview-ph svg{opacity:.18;}',
-    '.kd-preview-ph-label{',
-      'font-family:"Outfit",system-ui,sans-serif;',
-      'font-size:11px;color:rgba(12,30,44,0.30);letter-spacing:.04em;',
-    '}',
-    '.kd-preview-info{display:flex;flex-direction:column;gap:4px;}',
-    '.kd-preview-name{',
-      'font-family:"Outfit",system-ui,sans-serif;',
-      'font-size:14px;font-weight:600;color:#0c1e2c;',
-      'min-height:20px;',
-    '}',
-    '.kd-preview-desc{',
-      'font-family:"Outfit",system-ui,sans-serif;',
-      'font-size:12px;color:rgba(12,30,44,0.40);',
-      'min-height:16px;',
-    '}',
-    '.kd-preview-hint{',
-      'margin-top:auto;',
-      'font-family:"Outfit",system-ui,sans-serif;',
-      'font-size:11px;color:rgba(12,30,44,0.22);',
-      'line-height:1.4;',
+    '.kd-prod-tip img{',
+      'width:100%;height:auto;display:block;',
+      'border-radius:8px;object-fit:contain;',
     '}',
 
     /* ── MOBILE — tema claro ── */
@@ -387,9 +364,12 @@
     prodsHTML += '<div class="kd-prod-set' + (i === 0 ? ' active' : '') + '" data-cat="' + cat.id + '">';
     cat.products.forEach(function (p) {
       var external = p.href.indexOf('http') === 0;
-      prodsHTML += '<a class="kd-prod-item" href="' + p.href + '"' + (external ? ' target="_top"' : '') + ' data-name="' + p.name + '" data-desc="' + p.desc + '" data-img="' + (p.img || '') + '">';
+      prodsHTML += '<a class="kd-prod-item" href="' + p.href + '"' + (external ? ' target="_top"' : '') + '>';
       prodsHTML += '<div class="kd-prod-name">' + p.name + '</div>';
       prodsHTML += '<div class="kd-prod-desc">' + p.desc + '</div>';
+      if (p.img) {
+        prodsHTML += '<div class="kd-prod-tip"><img src="' + p.img + '" alt="' + p.name + '"></div>';
+      }
       prodsHTML += '</a>';
     });
     prodsHTML += '<a class="kd-prod-footer" href="' + cat.href + '"' + (cat.href.indexOf('http') === 0 ? ' target="_top"' : '') + '>';
@@ -402,20 +382,7 @@
   catsHTML += '</div>';
   prodsHTML += '</div>';
 
-  var deviceIconSVG = '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="#0c1e2c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="24" rx="3"/><line x1="16" y1="38" x2="32" y2="38"/><line x1="20" y1="34" x2="28" y2="38"/><polyline points="12 22 18 16 24 22 30 18 36 22"/></svg>';
-  var previewHTML = '<div class="kd-mega-preview" id="kd-preview">'
-    + '<div class="kd-preview-box" id="kd-preview-box">'
-      + '<img class="kd-preview-img" id="kd-preview-img" src="" alt="">'
-      + '<div class="kd-preview-ph" id="kd-preview-ph">' + deviceIconSVG + '<span class="kd-preview-ph-label" id="kd-preview-ph-label">Passe o mouse<br>sobre um produto</span></div>'
-    + '</div>'
-    + '<div class="kd-preview-info">'
-      + '<div class="kd-preview-name" id="kd-preview-name"></div>'
-      + '<div class="kd-preview-desc" id="kd-preview-desc"></div>'
-    + '</div>'
-    + '<div class="kd-preview-hint">Clique para ver a página completa do equipamento</div>'
-  + '</div>';
-
-  mega.innerHTML = '<div class="kd-mega-inner">' + catsHTML + prodsHTML + previewHTML + '</div>';
+  mega.innerHTML = '<div class="kd-mega-inner">' + catsHTML + prodsHTML + '</div>';
   document.body.insertBefore(mega, nav.nextSibling);
 
   /* ══════════════════════════════════════════════
@@ -494,33 +461,6 @@
       prodSets.forEach(function (s) { s.classList.remove('active'); });
       btn.classList.add('active');
       mega.querySelector('.kd-prod-set[data-cat="' + id + '"]').classList.add('active');
-    });
-  });
-
-  // — Preview panel
-  var previewImg = document.getElementById('kd-preview-img');
-  var previewPh = document.getElementById('kd-preview-ph');
-  var previewPhLabel = document.getElementById('kd-preview-ph-label');
-  var previewName = document.getElementById('kd-preview-name');
-  var previewDesc = document.getElementById('kd-preview-desc');
-
-  mega.querySelectorAll('.kd-prod-item').forEach(function (item) {
-    item.addEventListener('mouseenter', function () {
-      var name = this.dataset.name || '';
-      var desc = this.dataset.desc || '';
-      var img  = this.dataset.img  || '';
-      previewName.textContent = name;
-      previewDesc.textContent = desc;
-      if (img) {
-        previewImg.src = img;
-        previewImg.alt = name;
-        previewImg.classList.add('visible');
-        previewPh.style.display = 'none';
-      } else {
-        previewImg.classList.remove('visible');
-        previewPh.style.display = 'flex';
-        previewPhLabel.innerHTML = name;
-      }
     });
   });
 
