@@ -8,8 +8,8 @@
       id: 'enmg', label: 'ENMG e Potenciais Evocados', href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados',
       products: [
         { name: 'Litebox',         desc: '3 canais · USB · MNIO',               href: '/equipamentos/eletroneuromiografia-e-potenciais-evocados/litebox-light', img: '/assets/products/litebox.png' },
-        { name: 'Skybox',          desc: '5 canais · teclado dedicado',          href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/skybox' },
-        { name: 'Neuro MEP Micro', desc: '2 canais · portátil',                 href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep-micro' },
+        { name: 'Skybox',          desc: '5 canais · teclado dedicado',          href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/skybox', img: '/assets/products/skybox.png' },
+        { name: 'Neuro MEP Micro', desc: '2 canais · portátil',                 href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep-micro', img: '/assets/products/neuro-mep-micro.png' },
         { name: 'Neuro-MEP-4',    desc: 'Sistema modular completo',             href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-mep' },
         { name: 'Neuro EMG Micro', desc: '2–4 canais · ambulatorial',           href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-emg-micro' },
         { name: 'Neuro TOX',       desc: 'EMG guiado para toxina botulínica',   href: 'https://www.kandel.com.br/equipamento/eletroneuromiografia-e-pe/neuro-tox' },
@@ -40,7 +40,7 @@
     {
       id: 'audio', label: 'Audiologia', href: '/equipamentos/audiologia',
       products: [
-        { name: 'Neuro-Audio',    desc: 'ABR · AMLR · DPOAE · TEOAE',   href: '/equipamentos/audiologia/neuro-audio' },
+        { name: 'Neuro-Audio',    desc: 'ABR · AMLR · DPOAE · TEOAE',   href: '/equipamentos/audiologia/neuro-audio', img: '/assets/products/neuro-audio.png' },
         { name: 'Neuro-Audio-04', desc: 'Screening neonatal avançado',    href: 'https://www.kandel.com.br/equipamentos/audiologia/neuro-audio-04' },
       ]
     },
