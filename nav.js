@@ -224,25 +224,17 @@
     '}',
     '.kd-prod-footer:hover{color:#b8413f;}',
 
-    /* product image tooltip */
-    '.kd-prod-item{position:relative;}',
-    '.kd-prod-tip{',
-      'position:absolute;top:calc(100% + 10px);left:50%;',
-      'transform:translateX(-50%) translateY(-6px);',
-      'width:180px;',
-      'background:#fff;border-radius:12px;',
-      'box-shadow:0 8px 32px rgba(12,30,44,0.14);',
-      'border:1px solid rgba(12,30,44,0.08);',
-      'padding:8px;',
-      'opacity:0;visibility:hidden;pointer-events:none;',
-      'transition:opacity .18s,transform .18s,visibility .18s;',
-      'z-index:10;',
+    /* product image — expand on hover */
+    '.kd-prod-img-wrap{',
+      'overflow:hidden;',
+      'max-height:0;margin-top:0;',
+      'transition:max-height .30s ease,margin-top .30s ease,opacity .25s ease;',
+      'opacity:0;',
     '}',
-    '.kd-prod-item:hover .kd-prod-tip{',
-      'opacity:1;visibility:visible;',
-      'transform:translateX(-50%) translateY(0);',
+    '.kd-prod-item:hover .kd-prod-img-wrap{',
+      'max-height:180px;margin-top:10px;opacity:1;',
     '}',
-    '.kd-prod-tip img{',
+    '.kd-prod-img-wrap img{',
       'width:100%;height:auto;display:block;',
       'border-radius:8px;object-fit:contain;',
     '}',
@@ -368,7 +360,7 @@
       prodsHTML += '<div class="kd-prod-name">' + p.name + '</div>';
       prodsHTML += '<div class="kd-prod-desc">' + p.desc + '</div>';
       if (p.img) {
-        prodsHTML += '<div class="kd-prod-tip"><img src="' + p.img + '" alt="' + p.name + '"></div>';
+        prodsHTML += '<div class="kd-prod-img-wrap"><img src="' + p.img + '" alt="' + p.name + '"></div>';
       }
       prodsHTML += '</a>';
     });
