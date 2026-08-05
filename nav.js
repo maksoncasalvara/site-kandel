@@ -402,18 +402,21 @@
 
   // — Mega menu: abrir/fechar
   var equipLi = document.getElementById('kd-equip-li');
-  var closeTimer;
+  var openTimer, closeTimer;
 
   function openMega() {
     clearTimeout(closeTimer);
-    equipLi.classList.add('mega-open');
-    mega.classList.add('open');
+    openTimer = setTimeout(function () {
+      equipLi.classList.add('mega-open');
+      mega.classList.add('open');
+    }, 180);
   }
   function closeMega() {
+    clearTimeout(openTimer);
     closeTimer = setTimeout(function () {
       equipLi.classList.remove('mega-open');
       mega.classList.remove('open');
-    }, 120);
+    }, 180);
   }
 
   equipLi.addEventListener('mouseenter', openMega);
