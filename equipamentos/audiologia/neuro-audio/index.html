@@ -177,7 +177,7 @@
       box-shadow: 0 32px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.06);
       position: relative;
     }
-    .sw-screenshot-wrap img { width: 100%; display: block; }
+    .sw-screenshot-wrap img { width: 100%; display: block; border-radius: 12px; }
     .sw-screenshot-caption {
       position: absolute; bottom: 12px; left: 12px; right: 12px;
       background: rgba(12,30,44,.82); backdrop-filter: blur(8px);
@@ -186,6 +186,40 @@
       border: 1px solid rgba(255,255,255,.07);
     }
     .sw-screenshot-caption strong { color: rgba(255,255,255,.85); font-weight: 600; }
+
+    /* Lightbox */
+    .sw-screenshot-wrap { cursor: zoom-in; }
+    .sw-zoom-hint {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(12,30,44,.70); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.10); border-radius: 6px;
+      padding: 5px 10px; font-size: 11px; color: rgba(255,255,255,.50);
+      display: flex; align-items: center; gap: 5px; pointer-events: none;
+    }
+    .lb-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(5,10,18,.92); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .28s ease;
+      padding: 32px;
+    }
+    .lb-overlay.open { opacity: 1; pointer-events: all; }
+    .lb-img {
+      max-width: min(1200px, 92vw); max-height: 88vh;
+      object-fit: contain; border-radius: 10px;
+      box-shadow: 0 40px 100px rgba(0,0,0,.7);
+      transform: scale(.96); transition: transform .28s ease;
+    }
+    .lb-overlay.open .lb-img { transform: scale(1); }
+    .lb-close {
+      position: fixed; top: 20px; right: 24px;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.18);
+      color: #fff; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.20); }
 
     /* Sub-switcher (dentro de um painel) */
     .sw-sub-tabs { display: flex; gap: 6px; margin-bottom: 16px; }
@@ -1018,7 +1052,45 @@
   </div>
 </section>
 
+<!-- Lightbox overlay -->
+<div class="lb-overlay" id="lb-overlay">
+  <button class="lb-close" id="lb-close" aria-label="Fechar">✕</button>
+  <img class="lb-img" id="lb-img" src="" alt="">
+</div>
+
 <script>
+  /* Inject zoom hint into every screenshot wrap */
+  document.querySelectorAll('.sw-screenshot-wrap').forEach(function(wrap) {
+    var hint = document.createElement('div');
+    hint.className = 'sw-zoom-hint';
+    hint.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Ampliar';
+    wrap.appendChild(hint);
+  });
+
+  /* Lightbox logic */
+  var overlay = document.getElementById('lb-overlay');
+  var lbImg   = document.getElementById('lb-img');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src; lbImg.alt = alt;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.sw-screenshot-wrap').forEach(function(wrap) {
+    wrap.addEventListener('click', function() {
+      var img = wrap.querySelector('.sw-sub-img.active img') || wrap.querySelector('img');
+      if (img) openLightbox(img.src, img.alt);
+    });
+  });
+  document.getElementById('lb-close').addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeLightbox(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
   document.querySelectorAll('.sw-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
       var panel = this.dataset.panel;
