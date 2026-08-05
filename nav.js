@@ -193,7 +193,7 @@
       'opacity:0;visibility:hidden;pointer-events:none;',
       'transition:opacity .18s;',
     '}',
-    '.kd-prod-set.active{',
+    '#kd-mega.open .kd-prod-set.active{',
       'opacity:1;visibility:visible;pointer-events:auto;',
     '}',
     '.kd-prod-item{',
