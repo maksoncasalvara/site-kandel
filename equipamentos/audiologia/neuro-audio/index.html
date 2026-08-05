@@ -464,6 +464,9 @@
       <button class="sw-tab active" data-panel="assr">Multi-ASSR</button>
       <button class="sw-tab" data-panel="peate">PEATE / BERA</button>
       <button class="sw-tab" data-panel="oae">EOATE / EOAPD</button>
+      <button class="sw-tab" data-panel="vemp">VEMP</button>
+      <button class="sw-tab" data-panel="ecochg">ECochG</button>
+      <button class="sw-tab" data-panel="p300">P300</button>
     </div>
 
     <!-- Panel: Multi-ASSR -->
@@ -596,6 +599,138 @@
           </div>
           <div class="sw-screenshot-caption" id="sw-oae-caption">
             <strong>EOATE</strong> — Espectro de otoemissões transientes com resultado APROVADO
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: VEMP -->
+    <div class="sw-panel" id="sw-panel-vemp">
+      <div class="sw-demo-bullets">
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">cVEMP e oVEMP no mesmo módulo</div>
+            <div class="sw-bullet-desc">Avaliação sacular (cervical) e utricular (ocular) sem trocar equipamento ou configuração.</div>
+          </div>
+        </div>
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Controle de EMG em tempo real</div>
+            <div class="sw-bullet-desc">Histograma de amplitude muscular garante qualidade do sinal antes e durante a aquisição — elimina artefatos de contração inadequada.</div>
+          </div>
+        </div>
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Assimetria automática</div>
+            <div class="sw-bullet-desc">Cálculo instantâneo da assimetria entre as orelhas — identifica disfunção vestibular unilateral com precisão.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sw-demo-visual">
+        <div class="sw-sub-tabs">
+          <button class="sw-sub-tab active" data-sub="vemp-c">Cervical (cVEMP)</button>
+          <button class="sw-sub-tab" data-sub="vemp-o">Ocular (oVEMP)</button>
+        </div>
+        <div class="sw-screenshot-wrap">
+          <div class="sw-sub-img active" id="sw-sub-vemp-c">
+            <img src="/assets/screenshots/neuro-audio-vemp-cervical.png" alt="Software Neuro Audio — cVEMP cervical binaural">
+          </div>
+          <div class="sw-sub-img" id="sw-sub-vemp-o">
+            <img src="/assets/screenshots/neuro-audio-vemp-ocular.png" alt="Software Neuro Audio — oVEMP ocular binaural">
+          </div>
+          <div class="sw-screenshot-caption" id="sw-vemp-caption">
+            <strong>cVEMP</strong> — P1-N1 cervical binaural com controle de EMG e análise de assimetria
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: ECochG -->
+    <div class="sw-panel" id="sw-panel-ecochg">
+      <div class="sw-demo-bullets">
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Razão SP/AP automática</div>
+            <div class="sw-bullet-desc">Cálculo preciso da relação SP/AP e SP/AP área para diagnóstico de hidropsia endolinfática e Síndrome de Ménière.</div>
+          </div>
+        </div>
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Eletrodo transtimpânico</div>
+            <div class="sw-bullet-desc">Suporte a eletrodo de canal e transtimpânico para máxima amplitude de SP e AP — resultado diagnóstico mais confiável.</div>
+          </div>
+        </div>
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Dois canais simultâneos</div>
+            <div class="sw-bullet-desc">Aquisição binaural com visualização comparativa — avalie as duas orelhas numa única sessão.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sw-demo-visual">
+        <div class="sw-screenshot-wrap">
+          <img src="/assets/screenshots/neuro-audio-ecochg.png" alt="Software Neuro Audio — ECochG com SP/AP e razão automática">
+          <div class="sw-screenshot-caption">
+            <strong>ECochG</strong> — SP, AP e razão SP/AP calculados automaticamente
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel: P300 -->
+    <div class="sw-panel" id="sw-panel-p300">
+      <div class="sw-demo-bullets">
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Paradigma Oddball completo</div>
+            <div class="sw-bullet-desc">Estímulos significativos e não-significativos com marcação automática do componente P3 e identificação de resposta.</div>
+          </div>
+        </div>
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Tempo de resposta do paciente</div>
+            <div class="sw-bullet-desc">Histograma de tempo de reação integrado — métrica adicional valiosa na avaliação cognitiva e do processamento auditivo central.</div>
+          </div>
+        </div>
+        <div class="sw-bullet">
+          <div class="sw-bullet-dot">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#d44f4c" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <div class="sw-bullet-body">
+            <div class="sw-bullet-title">Latências N e P3 automáticas</div>
+            <div class="sw-bullet-desc">Amplitudes e latências calculadas automaticamente para comparação com valores normativos por faixa etária.</div>
+          </div>
+        </div>
+      </div>
+      <div class="sw-demo-visual">
+        <div class="sw-screenshot-wrap">
+          <img src="/assets/screenshots/neuro-audio-p300.png" alt="Software Neuro Audio — P300 com paradigma Oddball e tempo de resposta">
+          <div class="sw-screenshot-caption">
+            <strong>P300</strong> — Componente P3 com tempo de resposta do paciente integrado
           </div>
         </div>
       </div>
@@ -894,7 +1029,12 @@
     });
   });
 
-  var oaeCaptions = { eoate: '<strong>EOATE</strong> — Espectro de otoemissões transientes com resultado APROVADO', eoapd: '<strong>EOAPD</strong> — Diagrama de produto de distorção de 2 kHz a 10 kHz' };
+  var subCaptions = {
+    eoate: { el: 'sw-oae-caption', text: '<strong>EOATE</strong> — Espectro de otoemissões transientes com resultado APROVADO' },
+    eoapd: { el: 'sw-oae-caption', text: '<strong>EOAPD</strong> — Diagrama de produto de distorção de 2 kHz a 10 kHz' },
+    'vemp-c': { el: 'sw-vemp-caption', text: '<strong>cVEMP</strong> — P1-N1 cervical binaural com controle de EMG e análise de assimetria' },
+    'vemp-o': { el: 'sw-vemp-caption', text: '<strong>oVEMP</strong> — P1-N1 ocular binaural para avaliação da função utricular' }
+  };
   document.querySelectorAll('.sw-sub-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
       var sub = this.dataset.sub;
@@ -903,7 +1043,7 @@
       wrap.querySelectorAll('.sw-sub-img').forEach(function(i) { i.classList.remove('active'); });
       this.classList.add('active');
       document.getElementById('sw-sub-' + sub).classList.add('active');
-      document.getElementById('sw-oae-caption').innerHTML = oaeCaptions[sub];
+      if (subCaptions[sub]) document.getElementById(subCaptions[sub].el).innerHTML = subCaptions[sub].text;
     });
   });
 </script>
